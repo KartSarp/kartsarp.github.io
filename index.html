@@ -132,7 +132,7 @@
         margin: 15px;
         margin-left: auto;
         margin-right: auto;
-        display: flex; 
+        display: none; 
 
 
 
@@ -374,7 +374,7 @@
         $(".facelogin").hide();
 
         $("#skjema").show();
-        $("#sendkommentar").show();
+        $("#sendkommentar").css("display", "flex");
 
         brukerid=response.id;
         navn = response.name;
