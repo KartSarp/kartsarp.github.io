@@ -33,7 +33,7 @@
       #comment{
         float: left;
         height: 100%;
-        width: 28%;
+        width: 30%;
       }
       #knapp_esc, #knapp_opn {
         pointer-events: auto;
@@ -128,7 +128,26 @@
 
       }
 
+      #sendkommentar {
+        margin: auto;
+        margin-top: 15px;
+        height: 50px;
+        width: 100px;
+        background: green;
 
+      }
+      form {
+        width: 90%;
+        margin: auto;
+      }
+      #komment {
+        height: 75px;
+        width: 100%;
+
+      }
+      #sendkommentar:hover {
+        cursor: pointer;
+      }
 
 
 
@@ -224,6 +243,7 @@
 <body>
 
   <script>
+    // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
       console.log(response);
@@ -276,12 +296,93 @@
       FB.api('/me', function(response) {
         console.log('Successful login for: ' + response.name);
         console.log(response);
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
+        document.getElementById('status').innerHTML ='Thanks for logging in, ' + response.name + '!';
+
+
+        brukerid=response.id;
+
+
+
+        FB.api(
+          '/'+brukerid+'/picture',
+          'GET',
+          {},
+          function(response) {
+              picurl = response.data.url
+          }
+        );
+        
+
+
+
       });
-    }
+    };
 
 
+      require([
+      "esri/layers/FeatureLayer",
+      "esri/Graphic"
+      ],
+      function(
+        FeatureLayer, Graphic
+      ) {
+
+        const featureLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
+          outFields: ["*"],
+          popupEnabled: false,
+          id: "feedbacklayer"
+        });
+
+        function applyEdits(parametere) {
+          featureLayer.applyEdits(parametere).then(function(editsResult) {
+            // Get the objectId of the newly added feature.
+            // Call selectFeature function to highlight the new feature.
+            console.log(editsResult.addFeatureResults);
+            if (editsResult.addFeatureResults.length > 0) {
+              const objectId = editsResult.addFeatureResults[0].objectId;
+
+            }
+          }).then(function() {
+            $("#komment").val("")
+          })
+          .catch(function(error) {
+            console.log("===============================================");
+            console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
+              error.message);
+            console.log("error = ", error);
+          });
+        };
+
+        editFeature = new Graphic({
+          geometry: {
+            type: "point",  // autocasts as new Point()
+            longitude: 0.0,
+            latitude: 0.0
+          },
+          attributes: {
+            "userid": brukerid,
+            "kommentar": "none",
+            "navn": "katt",
+            "epost": "none",
+            "bildeurl": picurl
+          }
+        });
+
+        // Setup the applyEdits parameter with adds.
+        const edits = {
+          addFeatures: [editFeature]
+        };
+        console.log(editFeature);
+
+
+
+        $("#sendkommentar").on('click', function(edits) {
+          editFeature.attributes.kommentar = $("#komment").val();
+          applyEdits({addFeatures: [editFeature]});
+        });
+
+      });
 
 
 
@@ -315,6 +416,13 @@
 
     <div id="status">
     </div>
+
+    <form>
+      <label for="komment">Din kommentar</label>
+      <input type="text" id="komment" name="komment" value="" placeholder="Skriv en kommentar...">
+    </form>
+    <div id="sendkommentar"></div>
+
   </div>
 
 </body>
