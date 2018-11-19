@@ -161,6 +161,38 @@
       }
 
 
+        .singlecomment {
+          width: 200px;
+          height: 70px;
+          background: lightblue;
+
+        }
+        .bilde {
+          height: 50px;
+          width: 50px;
+          background: yellow;
+          float: left;
+          margin-top: auto;
+          margin-bottom: auto;
+
+        }
+        .tekst {
+          width: calc(100% - 50px);
+          height: 70px;
+          float: left;
+        }
+        .navn {
+          height: 20px;
+          width: 100%;
+          background: blue;
+        }
+        .komm {
+          height: 50px;
+          width: 100%;
+          background: red;
+        }
+
+
       /* On screens that are 992px or less, set the background color to blue */
       @media screen and (max-width: 992px) {
         .cont {
@@ -360,8 +392,11 @@
               console.log("Attributter");
               console.log(kommentarer);
               for (var x in kommentarer) {
+                var navnet = kommentarer[x].attributes.navn;
                 var en_comment = kommentarer[x].attributes.kommentar;
-                $("#kommentarfelt").append('<div class="singlecomment">'+en_comment+'</div>');
+                var bilde = kommentarer[x].attributes.bildeurl;
+                $("#kommentarfelt").append(
+                  '<div class="singlecomment"> <div class="bilde"><img src="'+bilde+'"/></div><div class="tekst"><div class="navn">'+navnet+'</div><div class="komm">'+en_comment+'</div></div></div>');
               };
               
             });
