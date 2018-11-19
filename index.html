@@ -129,9 +129,10 @@
       }
 
       #sendkommentar {
-        margin: auto;
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;  
 
 
 
@@ -184,7 +185,7 @@
           flex-direction: column;
           justify-content: center;
       }
-      
+
       .navn {
 
         width: 100%;
@@ -201,7 +202,7 @@
         margin-left: auto;
         margin-right: auto;
         width: 153px;
-        display: block;
+        display: block !important;
       }
 
 
@@ -350,8 +351,8 @@
       FB.api('/me', function(response) {
         console.log('Successful login for: ' + response.name);
         console.log(response);
-        document.getElementById('status').innerHTML ='Thanks for logging in, ' + response.name + '!';
-
+        document.getElementById('status').innerHTML ='Du er nå logget inn' + response.name + '!';
+        $(".facelogin").hide();
 
         brukerid=response.id;
         navn = response.name;
