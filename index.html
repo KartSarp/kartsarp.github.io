@@ -313,11 +313,22 @@
 
         require([
         "esri/layers/FeatureLayer",
-        "esri/Graphic"
+        "esri/Graphic",
+        "esri/tasks/QueryTask",
+        "esri/tasks/support/Query"
         ],
         function(
-          FeatureLayer, Graphic
+          FeatureLayer, Graphic, QueryTask, Query
         ) {
+
+
+
+
+
+
+
+
+
 
           const featureLayer = new FeatureLayer({
             url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
@@ -325,6 +336,25 @@
             popupEnabled: false,
             id: "feedbacklayer"
           });
+
+
+
+          var query = .createQuery();
+          query.where = "navn = '"+navn+"'";
+          query.outFields = ["*"];
+
+          featureLayer.queryFeatures(query)
+            .then(function(response){
+              attributter = response.features[0].attributes;
+
+              
+            });
+          console.log("Attributter");
+          console.log(attributter);
+
+
+
+
 
           function applyEdits(parametere) {
             featureLayer.applyEdits(parametere).then(function(editsResult) {
@@ -336,8 +366,10 @@
 
               }
             }).then(function() {
+              //Tøm kommentar-textfeltet
               $("#komment").val("")
             })
+            //Throw errorer som måtte dukke opp i consollen
             .catch(function(error) {
               console.log("===============================================");
               console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
@@ -347,24 +379,9 @@
           };
 
 
-          /*
-          var picurl;
-        
-          FB.api('/'+brukerid+'/picture','GET',{"redirect":"false"},
-            function(response) {
-              console.log(response);
 
-              var picurl = response.data.url;
-              console.log("picurl");
-              console.log(picurl);
-            }
-          );
-          console.log("picurl");
-          console.log(picurl);
-          */
+          //Endre BildeURL-atributten i punkt-objektet.
           function getMyPic(callback){
-              //instead of returning an id, pass it to a
-              //continuation function when we finally get it
             FB.api('/'+brukerid+'/picture','GET',{"redirect":"false"},
               function(response) {
                 callback(response.data.url);
@@ -396,15 +413,13 @@
                   editFeature.attributes.bildeurl = url;
               });
           };
-
+          //Kall funkjsonen som skal endre på URLatributten. 
           getPic();
 
           // Setup the applyEdits parameter with adds.
           const edits = {
             addFeatures: [editFeature]
           };
-          console.log(editFeature);
-
 
 
           $("#sendkommentar").on('click', function(edits) {
