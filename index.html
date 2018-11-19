@@ -300,20 +300,22 @@
 
 
         brukerid=response.id;
+        console.log(brukerid);
 
 
 
         FB.api(
           '/'+brukerid+'/picture',
           'GET',
-          {},
+          {"redirect":"false"},
           function(response) {
             console.log(response);
             //picurl = response.data.url
           }
         );
         
-              require([
+
+        require([
       "esri/layers/FeatureLayer",
       "esri/Graphic"
       ],
@@ -378,12 +380,11 @@
 
       });
 
-
       });
     };
 
 
-
+      
 
 
 
