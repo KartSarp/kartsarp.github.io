@@ -230,6 +230,29 @@
       }
 
 
+
+      .velkommen {
+          position: fixed; /* Stay in place */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: transparent;
+          z-index: 99;
+      }
+
+      /* Modal Content/Box */
+      .velkommen-innh {
+          background-color: #fefefe;
+          margin: 5% auto; /* 5% from the top and centered */
+          padding: 20px;
+          border: 1px solid #888;
+          max-height: 90%;
+          max-width: 300px; /* Could be more or less, depending on screen size */
+          overflow: auto;
+      }
+
       /* On screens that are 992px or less, set the background color to blue */
       @media screen and (max-width: 992px) {
         .cont {
@@ -569,6 +592,17 @@
     <button id="sendkommentar" class="w3-btn w3-blue w3-border w3-border-red w3-round-large">Send kommentar</button>
 
     <div id="kommentarfelt"></div>
+
+    <div id="velkomstBoks" class="velkommen" style="background-color: rgba(0, 0, 0, 0.5); display: none;">
+
+      <!-- Modal content -->
+      <div class="velkommen-innh">
+        <span class="close">×</span>
+        <b>Takk for din tilbakemelding</b>
+        
+      </div>
+
+    </div>
 
   </div>
 
