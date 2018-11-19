@@ -205,6 +205,11 @@
         display: block !important;
       }
 
+      #status {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
 
       /* On screens that are 992px or less, set the background color to blue */
       @media screen and (max-width: 992px) {
@@ -351,7 +356,7 @@
       FB.api('/me', function(response) {
         console.log('Successful login for: ' + response.name);
         console.log(response);
-        document.getElementById('status').innerHTML ='Du er nå logget inn' + response.name + '!';
+        document.getElementById('status').innerHTML ='Du er nå logget inn ' + response.name + '!';
         $(".facelogin").hide();
 
         brukerid=response.id;
