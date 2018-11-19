@@ -359,7 +359,10 @@
 
               console.log("Attributter");
               console.log(kommentarer);
-              $("#kommentarfelt").append('<div class="singlecomment"></div>');
+              for (var x in kommentarer) {
+                var en_comment = kommentarer[x].attributes.kommentar;
+              };
+              $("#kommentarfelt").append('<div class="singlecomment">'+en_comment+'</div>');
             });
 
 
