@@ -303,17 +303,7 @@
         navn = response.name;
         console.log(brukerid);
 
-        var picurl;
-        
-        FB.api('/'+brukerid+'/picture','GET',{"redirect":"false"},
-          function(response) {
-            console.log(response);
 
-            var picurl = response.data.url;
-            console.log("picurl");
-            console.log(picurl);
-          }
-        );
 
 
 
@@ -326,7 +316,7 @@
         "esri/Graphic"
         ],
         function(
-          FeatureLayer, Graphic, picurl
+          FeatureLayer, Graphic
         ) {
 
           const featureLayer = new FeatureLayer({
@@ -355,6 +345,22 @@
               console.log("error = ", error);
             });
           };
+
+
+
+          var picurl;
+        
+          FB.api('/'+brukerid+'/picture','GET',{"redirect":"false"},
+            function(response) {
+              console.log(response);
+
+              var picurl = response.data.url;
+              console.log("picurl");
+              console.log(picurl);
+            }
+          );
+
+
 
           editFeature = new Graphic({
             geometry: {
