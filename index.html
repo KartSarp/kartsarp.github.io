@@ -345,7 +345,7 @@
 
           featureLayer.queryFeatures(query)
             .then(function(response){
-              attributter = response.features[0].attributes;
+              attributter = response.features;
 
               console.log("Attributter");
               console.log(attributter);
