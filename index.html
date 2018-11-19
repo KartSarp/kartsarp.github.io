@@ -310,12 +310,13 @@
           {"redirect":"false"},
           function(response) {
             console.log(response);
-            //picurl = response.data.url
+            picurl = response.data.url
           }
         );
         
 
-        require([
+        
+      require([
       "esri/layers/FeatureLayer",
       "esri/Graphic"
       ],
@@ -380,11 +381,10 @@
 
       });
 
+
       });
     };
 
-
-      
 
 
 
