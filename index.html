@@ -537,10 +537,10 @@
 
 
           $("#sendkommentar").on('click', function(edits) {
-            $(".velkommen").show();
+            $("#velkomstBoks").show();
             editFeature.attributes.kommentar = $("#komment").val();
             applyEdits({addFeatures: [editFeature]});
-            $(".velkommen").delay(3000).hide();
+            $("#velkomstBoks").delay(3000).hide();
           });
 
         });
