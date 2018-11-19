@@ -304,8 +304,8 @@
         console.log(brukerid);
 
         var picurl;
-        /*
-        var katter= FB.api(
+        
+        FB.api(
           '/'+brukerid+'/picture',
           'GET',
           {"redirect":"false"},
@@ -313,9 +313,10 @@
             console.log(response);
 
             picurl = response.data.url;
-            return picurl;
+            console.log("picurl");
+            console.log(picurl);
           }
-        );*/
+        );
 
         $.get( "https://graph.facebook.com/"+brukerid+"/picture", function( data ) {
           console.log("BILDE");
