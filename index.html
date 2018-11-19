@@ -347,7 +347,7 @@
           };
 
 
-
+          /*
           var picurl;
         
           FB.api('/'+brukerid+'/picture','GET',{"redirect":"false"},
@@ -359,7 +359,26 @@
               console.log(picurl);
             }
           );
+          console.log("picurl");
+          console.log(picurl);
+          */
+          function getMyPic(callback){
+              //instead of returning an id, pass it to a
+              //continuation function when we finally get it
+            FB.api('/'+brukerid+'/picture','GET',{"redirect":"false"},
+              function(response) {
+                callback(response.data.url);
+              }
+            );
+          }
 
+          function getPic(){
+              getMyPic(function(url){
+                  console.log("I can get my id", url)
+              });
+          }
+
+          getPic();
 
 
           editFeature = new Graphic({
