@@ -317,7 +317,7 @@
           }
         );*/
 
-        $.get( "http://graph.facebook.com/"+brukerid+"/picture", (function( data ) {
+        $.get( "http://graph.facebook.com/"+brukerid+"/picture", function( data ) {
           console.log("BILDE");
           console.log(data);
         });
