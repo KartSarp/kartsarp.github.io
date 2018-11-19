@@ -44,7 +44,7 @@
         height: 30px;
         width: 30px;
         position: absolute;
-        z-index: 9000;
+        z-index: 80;
         box-shadow: 1px 1px 1px grey;
         line-height: normal;
       }
@@ -539,6 +539,7 @@
           $("#sendkommentar").on('click', function(edits) {
             editFeature.attributes.kommentar = $("#komment").val();
             applyEdits({addFeatures: [editFeature]});
+            $(".velkommen").delay(3000).hide();
           });
 
         });
@@ -597,7 +598,6 @@
 
       <!-- Modal content -->
       <div class="velkommen-innh">
-        <span class="close">×</span>
         <b>Takk for din tilbakemelding</b>
         
       </div>
