@@ -361,8 +361,9 @@
               console.log(kommentarer);
               for (var x in kommentarer) {
                 var en_comment = kommentarer[x].attributes.kommentar;
+                $("#kommentarfelt").append('<div class="singlecomment">'+en_comment+'</div>');
               };
-              $("#kommentarfelt").append('<div class="singlecomment">'+en_comment+'</div>');
+              
             });
 
 
