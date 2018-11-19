@@ -375,11 +375,12 @@
           function getPic(){
               getMyPic(function(url){
                   console.log("BildeUrl", url)
-                  picurl = url;
+                  //picurl = url;
+                  return url;
               });
           }
 
-          getPic();
+          picurl = getPic();
 
 
           editFeature = new Graphic({
