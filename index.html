@@ -300,19 +300,23 @@
 
 
         brukerid=response.id;
+        navn = response.name;
         console.log(brukerid);
 
         var picurl;
-
-        FB.api(
+        var katter= FB.api(
           '/'+brukerid+'/picture',
           'GET',
           {"redirect":"false"},
           function(response) {
             console.log(response);
+
             picurl = response.data.url;
+            return picurl;
           }
         );
+
+
         
 
 
@@ -360,7 +364,7 @@
             attributes: {
               "userid": brukerid,
               "kommentar": "none",
-              "navn": "katt",
+              "navn": navn,
               "epost": "none",
               "bildeurl": picurl
             }
