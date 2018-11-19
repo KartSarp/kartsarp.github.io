@@ -305,23 +305,17 @@
 
         var picurl;
         
-        FB.api(
-          '/'+brukerid+'/picture',
-          'GET',
-          {"redirect":"false"},
+        FB.api('/'+brukerid+'/picture','GET',{"redirect":"false"},
           function(response) {
             console.log(response);
 
-            picurl = response.data.url;
+            var picurl = response.data.url;
             console.log("picurl");
             console.log(picurl);
           }
         );
 
-        $.get( "https://graph.facebook.com/"+brukerid+"/picture", function( data ) {
-          console.log("BILDE");
-          console.log(data);
-        });
+
 
 
         
@@ -332,7 +326,7 @@
         "esri/Graphic"
         ],
         function(
-          FeatureLayer, Graphic
+          FeatureLayer, Graphic, picurl
         ) {
 
           const featureLayer = new FeatureLayer({
@@ -373,7 +367,7 @@
               "kommentar": "none",
               "navn": navn,
               "epost": "none",
-              "bildeurl": katter
+              "bildeurl": picurl
             }
           });
 
