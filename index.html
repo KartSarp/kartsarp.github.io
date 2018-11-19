@@ -385,7 +385,7 @@
 
 
           var query = featureLayer.createQuery();
-          query.where = "navn = '"+navn+"'";
+          query.where = "1=1";
           query.outFields = ["*"];
 
           featureLayer.queryFeatures(query)
