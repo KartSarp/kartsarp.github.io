@@ -310,76 +310,76 @@
           {"redirect":"false"},
           function(response) {
             console.log(response);
-            picurl = response.data.url
+            picurl = response.data.url;
           }
         );
         
 
-        
-      require([
-      "esri/layers/FeatureLayer",
-      "esri/Graphic"
-      ],
-      function(
-        FeatureLayer, Graphic
-      ) {
 
-        const featureLayer = new FeatureLayer({
-          url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
-          outFields: ["*"],
-          popupEnabled: false,
-          id: "feedbacklayer"
-        });
+        require([
+        "esri/layers/FeatureLayer",
+        "esri/Graphic"
+        ],
+        function(
+          FeatureLayer, Graphic
+        ) {
 
-        function applyEdits(parametere) {
-          featureLayer.applyEdits(parametere).then(function(editsResult) {
-            // Get the objectId of the newly added feature.
-            // Call selectFeature function to highlight the new feature.
-            console.log(editsResult.addFeatureResults);
-            if (editsResult.addFeatureResults.length > 0) {
-              const objectId = editsResult.addFeatureResults[0].objectId;
-
-            }
-          }).then(function() {
-            $("#komment").val("")
-          })
-          .catch(function(error) {
-            console.log("===============================================");
-            console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
-              error.message);
-            console.log("error = ", error);
+          const featureLayer = new FeatureLayer({
+            url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
+            outFields: ["*"],
+            popupEnabled: false,
+            id: "feedbacklayer"
           });
-        };
 
-        editFeature = new Graphic({
-          geometry: {
-            type: "point",  // autocasts as new Point()
-            longitude: 0.0,
-            latitude: 0.0
-          },
-          attributes: {
-            "userid": brukerid,
-            "kommentar": "none",
-            "navn": "katt",
-            "epost": "none",
-            "bildeurl": picurl
-          }
+          function applyEdits(parametere) {
+            featureLayer.applyEdits(parametere).then(function(editsResult) {
+              // Get the objectId of the newly added feature.
+              // Call selectFeature function to highlight the new feature.
+              console.log(editsResult.addFeatureResults);
+              if (editsResult.addFeatureResults.length > 0) {
+                const objectId = editsResult.addFeatureResults[0].objectId;
+
+              }
+            }).then(function() {
+              $("#komment").val("")
+            })
+            .catch(function(error) {
+              console.log("===============================================");
+              console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
+                error.message);
+              console.log("error = ", error);
+            });
+          };
+
+          editFeature = new Graphic({
+            geometry: {
+              type: "point",  // autocasts as new Point()
+              longitude: 0.0,
+              latitude: 0.0
+            },
+            attributes: {
+              "userid": brukerid,
+              "kommentar": "none",
+              "navn": "katt",
+              "epost": "none",
+              "bildeurl": picurl
+            }
+          });
+
+          // Setup the applyEdits parameter with adds.
+          const edits = {
+            addFeatures: [editFeature]
+          };
+          console.log(editFeature);
+
+
+
+          $("#sendkommentar").on('click', function(edits) {
+            editFeature.attributes.kommentar = $("#komment").val();
+            applyEdits({addFeatures: [editFeature]});
+          });
+
         });
-
-        // Setup the applyEdits parameter with adds.
-        const edits = {
-          addFeatures: [editFeature]
-        };
-        console.log(editFeature);
-
-
-
-        $("#sendkommentar").on('click', function(edits) {
-          editFeature.attributes.kommentar = $("#komment").val();
-          applyEdits({addFeatures: [editFeature]});
-        });
-
-      });
 
 
       });
