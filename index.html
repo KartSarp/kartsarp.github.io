@@ -372,15 +372,7 @@
             );
           }
 
-          function getPic(){
-              getMyPic(function(url){
-                  console.log("BildeUrl", url)
-                  //picurl = url;
-                  return url;
-              });
-          }
 
-          picurl = getPic();
           console.log(picurl);
 
           editFeature = new Graphic({
@@ -397,6 +389,17 @@
               "bildeurl": picurl
             }
           });
+
+
+          function getPic(){
+              getMyPic(function(url){
+                  console.log("BildeUrl", url)
+                  //picurl = url;
+                  editFeature.attributes.bildeurl = url;
+              });
+          };
+
+          getPic();
 
           // Setup the applyEdits parameter with adds.
           const edits = {
