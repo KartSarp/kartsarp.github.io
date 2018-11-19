@@ -157,20 +157,22 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 15px;
-        background: lightblue;
+
       }
 
 
         .singlecomment {
-          width: 200px;
+          width: 90%;
           height: 70px;
-          background: lightblue;
+          margin-left: auto;
+          margin-right: auto;
+
 
         }
         .bilde {
           height: 50px;
           width: 50px;
-          background: yellow;
+
           float: left;
           margin-top: auto;
           margin-bottom: auto;
@@ -184,12 +186,13 @@
         .navn {
           height: 20px;
           width: 100%;
-          background: blue;
+
         }
         .komm {
           height: 50px;
           width: 100%;
-          background: red;
+
+          font-size: small;
         }
 
 
@@ -396,7 +399,7 @@
                 var en_comment = kommentarer[x].attributes.kommentar;
                 var bilde = kommentarer[x].attributes.bildeurl;
                 $("#kommentarfelt").append(
-                  '<div class="singlecomment"> <div class="bilde"><img src="'+bilde+'"/></div><div class="tekst"><div class="navn">'+navnet+'</div><div class="komm">'+en_comment+'</div></div></div>');
+                  '<div class="singlecomment"> <div class="bilde"><img src="'+bilde+'"/></div><div class="tekst"><div class="navn"><b>'+navnet+'</b></div><div class="komm">'+en_comment+'</div></div></div>');
               };
               
             });
