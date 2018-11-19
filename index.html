@@ -537,6 +537,7 @@
 
 
           $("#sendkommentar").on('click', function(edits) {
+            $(".velkommen").show();
             editFeature.attributes.kommentar = $("#komment").val();
             applyEdits({addFeatures: [editFeature]});
             $(".velkommen").delay(3000).hide();
