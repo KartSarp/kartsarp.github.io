@@ -354,7 +354,7 @@
 			// for FB.getLoginStatus().
 			if (response.status === 'connected') {
 				// Logged into your app and Facebook.
-				testAPI();
+				innlogget();
 			} else {
 				// The person is not logged into your app or we are unable to tell.
 				document.getElementById('status').innerHTML = 'Please log ' +
@@ -395,63 +395,64 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 
-		function testAPI() {
-			console.log('Welcome!  Fetching your information.... ');
-			FB.api('/me', function(response) {
-				console.log('Successful login for: ' + response.name);
-				console.log(response);
-				document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
-
-				$(".facelogin").hide();
-
-				$("#skjema").show();
-				$("#sendkommentar").css("display", "flex");
-
-				brukerid = response.id;
-				navn = response.name;
-				console.log(brukerid);
 
 
 
-				require([
-						"esri/layers/FeatureLayer",
-						"esri/Graphic",
-						"esri/tasks/QueryTask",
-						"esri/tasks/support/Query"
-					],
-					function(FeatureLayer, Graphic, QueryTask, Query) {
+		require([
+				"esri/layers/FeatureLayer",
+				"esri/Graphic",
+				"esri/tasks/QueryTask",
+				"esri/tasks/support/Query"
+			],
+			function(FeatureLayer, Graphic, QueryTask, Query) {
 
 
-						const featureLayer = new FeatureLayer({
-							url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
-							outFields: ["*"],
-							popupEnabled: false,
-							id: "feedbacklayer"
-						});
+				const featureLayer = new FeatureLayer({
+					url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
+					outFields: ["*"],
+					popupEnabled: false,
+					id: "feedbacklayer"
+				});
 
 
 
-						var query = featureLayer.createQuery();
-						query.where = "1=1";
-						query.outFields = ["*"];
+				var query = featureLayer.createQuery();
+				query.where = "1=1";
+				query.outFields = ["*"];
 
-						featureLayer.queryFeatures(query)
-							.then(function(response) {
-								kommentarer = response.features;
+				featureLayer.queryFeatures(query)
+					.then(function(response) {
+						kommentarer = response.features;
 
-								console.log("Attributter");
-								console.log(kommentarer);
-								for (var x in kommentarer) {
-									var navnet = kommentarer[x].attributes.navn;
-									var en_comment = kommentarer[x].attributes.kommentar;
-									var bilde = kommentarer[x].attributes.bildeurl;
-									$("#kommentarfelt").append(
-										'<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div></div></div>');
-								};
+						console.log("Attributter");
+						console.log(kommentarer);
+						for (var x in kommentarer) {
+							var navnet = kommentarer[x].attributes.navn;
+							var en_comment = kommentarer[x].attributes.kommentar;
+							var bilde = kommentarer[x].attributes.bildeurl;
+							$("#kommentarfelt").append(
+								'<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div></div></div>');
+						};
 
-							});
+					});
 
 
+								//Koden inne i Innlogget funksjonen kjøres bare for personer som har logget inn med facebook.
+				function innlogget() {
+					console.log('Welcome!  Fetching your information.... ');
+					FB.api('/me', function(response) {
+						console.log('Successful login for: ' + response.name);
+						console.log(response);
+						document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
+
+						$(".facelogin").hide();
+
+						$("#skjema").show();
+						$("#sendkommentar").css("display", "flex");
+
+						brukerid = response.id;
+						navn = response.name;
+						console.log(brukerid);
 
 
 						function applyEdits(parametere) {
@@ -530,13 +531,19 @@
 								addFeatures: [editFeature]
 							});
 							$("#velkomstBoks").delay(3000).hide();
-						});
+						});				
+
+
 
 					});
+				};
+
 
 
 			});
-		};
+
+
+
 
 
   </script>
