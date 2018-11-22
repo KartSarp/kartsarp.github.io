@@ -455,6 +455,7 @@
                 var usrid = kommentarer[x].attributes.userid;
                 var navnet = kommentarer[x].attributes.navn;
                 var en_comment = kommentarer[x].attributes.kommentar;
+                console.log(usrid);
                 //Endre BildeURL-atributten i punkt-objektet.
                 function getMyPic(callback){
                   FB.api('/'+usrid+'/picture','GET',{"redirect":"false"},
