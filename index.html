@@ -380,7 +380,7 @@
 
 
 
-				function checkLoginState() {
+				$window.checkLoginState = function() {
 					console.log("kjører checkLoginState");
 					FB.getLoginStatus(function(response) {
 						statusChangeCallback(response);
