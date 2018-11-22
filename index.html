@@ -385,7 +385,27 @@
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 
+				function checkLoginState() {
+					FB.getLoginStatus(function(response) {
+						statusChangeCallback(response);
+					});
+				};
 
+				window.fbAsyncInit = function() {
+					FB.init({
+						appId: '371994680203106',
+						cookie: true,
+						xfbml: true,
+						version: 'v3.2'
+					});
+
+					FB.AppEvents.logPageView();
+
+					FB.getLoginStatus(function(response) {
+						statusChangeCallback(response);
+					});
+
+				};
 
 
 				const featureLayer = new FeatureLayer({
@@ -523,27 +543,7 @@
 
 			});
 
-			function checkLoginState() {
-				FB.getLoginStatus(function(response) {
-					statusChangeCallback(response);
-				});
-			};
 
-			window.fbAsyncInit = function() {
-				FB.init({
-					appId: '371994680203106',
-					cookie: true,
-					xfbml: true,
-					version: 'v3.2'
-				});
-
-				FB.AppEvents.logPageView();
-
-				FB.getLoginStatus(function(response) {
-					statusChangeCallback(response);
-				});
-
-			};
 
 
 
