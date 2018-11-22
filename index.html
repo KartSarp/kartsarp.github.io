@@ -483,8 +483,8 @@
             }).then(function() {
               //Tøm kommentar-textfeltet
               $("#komment").val("");
-              $(".velkommen").show();
-              $(".velkommen").delay(2000).hide();
+              $(".velkommen").css("display", "block");
+              $(".velkommen").delay(2000).css("display", "none");
             })
             //Throw errorer som måtte dukke opp i consollen
             .catch(function(error) {
