@@ -345,190 +345,185 @@
 <body>
 
   <script> 
-	 $(function() {
-			 $(".velkommen").hide();
 
 
-			 // This is called with the results from from FB.getLoginStatus().
-			 function statusChangeCallback(response) {
-				console.log('statusChangeCallback');
-				console.log(response);
-				// The response object is returned with a status field that lets the
-				// app know the current login status of the person.
-				// Full docs on the response object can be found in the documentation
-				// for FB.getLoginStatus().
-				if (response.status === 'connected') {
-				  // Logged into your app and Facebook.
-				  testAPI();
-				} else {
-				  // The person is not logged into your app or we are unable to tell.
-				  document.getElementById('status').innerHTML = 'Please log ' +
-					 'into this app.';
-				}
-			 };
-
-			 function checkLoginState() {
-				FB.getLoginStatus(function(response) {
-				  statusChangeCallback(response);
-				});
-			 };
-
-			 window.fbAsyncInit = function() {
-				FB.init({
-				  appId: '371994680203106',
-				  cookie: true,
-				  xfbml: true,
-				  version: 'v3.2'
-				});
-
-				FB.AppEvents.logPageView();
-
-				FB.getLoginStatus(function(response) {
-				  statusChangeCallback(response);
-				});
-
-			 };
-
-			 (function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) {
-				  return;
-				}
-				js = d.createElement(s);
-				js.id = id;
-				js.src = "https://connect.facebook.net/en_US/sdk.js";
-				fjs.parentNode.insertBefore(js, fjs);
-			 }(document, 'script', 'facebook-jssdk'));
-
-			function testAPI() {
-			  	console.log('Welcome!  Fetching your information.... ');
-			  	FB.api('/me', function(response) {
-				  	console.log('Successful login for: ' + response.name);
-					console.log(response);
-					document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
-
-					$(".facelogin").hide();
-
-					$("#skjema").show();
-					$("#sendkommentar").css("display", "flex");
-
-					brukerid = response.id;
-					navn = response.name;
-					console.log(brukerid);
-
-
-
-					require([
-						"esri/layers/FeatureLayer",
-						"esri/Graphic",
-						"esri/tasks/QueryTask",
-						"esri/tasks/support/Query"
-						],
-						function(FeatureLayer, Graphic, QueryTask, Query) {
-							const featureLayer = new FeatureLayer({
-								url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
-								outFields: ["*"],
-								popupEnabled: false,
-								id: "feedbacklayer"
-							});
-
-
-							var query = featureLayer.createQuery();
-							query.where = "1=1";
-							query.outFields = ["*"];
-
-							featureLayer.queryFeatures(query).then(function(response) {
-								kommentarer = response.features;
-
-								console.log("Attributter");
-								console.log(kommentarer);
-								for (var x in kommentarer) {
-									var navnet = kommentarer[x].attributes.navn;
-									var en_comment = kommentarer[x].attributes.kommentar;
-									var bilde = kommentarer[x].attributes.bildeurl;
-									$("#kommentarfelt").append('<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div></div></div>');
-								};
-
-							});
-
-
-							function applyEdits(parametere) {
-								featureLayer.applyEdits(parametere).then(function(editsResult) {
-									// Get the objectId of the newly added feature.
-									// Call selectFeature function to highlight the new feature.
-									console.log(editsResult.addFeatureResults);
-									if (editsResult.addFeatureResults.length > 0) {
-										const objectId = editsResult.addFeatureResults[0].objectId;
-
-									};
-								}).then(function() {
-									//Tøm kommentar-textfeltet
-									$("#komment").val("");
-									$(".velkommen").css("display", "block");
-									$(".velkommen").delay(2000).css("display", "none");
-								}).catch(function(error) {
-									console.log("===============================================");
-									console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
-										error.message);
-									console.log("error = ", error);
-								 });
-							};
-
-
-
-							//Endre BildeURL-atributten i punkt-objektet.
-							function getMyPic(callback) {
-								FB.api('/' + brukerid + '/picture', 'GET', {"redirect": "false"},
-								 	function(response) {callback(response.data.url)}
-								);
-							};
-
-
-							editFeature = new Graphic({
-							  geometry: {
-								 type: "point", // autocasts as new Point()
-								 longitude: 0.0,
-								 latitude: 0.0
-							  },
-							  attributes: {
-								 "userid": brukerid,
-								 "kommentar": "none",
-								 "navn": navn,
-								 "epost": "none",
-								 "bildeurl": "",
-								 "timedate": ""
-							  };
-							});
-
-
-							function getPic() {
-								getMyPic(function(url) {
-									console.log("BildeUrl", url)
-									//picurl = url;
-									editFeature.attributes.bildeurl = url;
-							  });
-							};
-							//Kall funkjsonen som skal endre på URLatributten. 
-							getPic();
-
-							// Setup the applyEdits parameter with adds.
-							const edits = {
-							  addFeatures: [editFeature]
-							};
-
-
-							$("#sendkommentar").on('click', function(edits) {
-								editFeature.attributes.kommentar = $("#komment").val();
-								editFeature.attributes.timedate = new Date().toLocaleString();
-								applyEdits({
-									addFeatures: [editFeature]
-								});
-							});
-
-						}
-					); //End of Arcgis JS API
-				});
+		 // This is called with the results from from FB.getLoginStatus().
+		function statusChangeCallback(response) {
+			console.log('statusChangeCallback');
+			console.log(response);
+			// The response object is returned with a status field that lets the
+			// app know the current login status of the person.
+			// Full docs on the response object can be found in the documentation
+			// for FB.getLoginStatus().
+			if (response.status === 'connected') {
+				// Logged into your app and Facebook.
+				testAPI();
+			} else {
+			  // The person is not logged into your app or we are unable to tell.
+			  document.getElementById('status').innerHTML = 'Please log ' +
+				 'into this app.';
 			};
+		};
+
+
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId: '371994680203106',
+				cookie: true,
+				xfbml: true,
+				version: 'v3.2'
+			});
+
+			FB.AppEvents.logPageView();
+
+			FB.getLoginStatus(function(response) {
+			  statusChangeCallback(response);
+			});
+
+		};
+
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {
+			  return;
+			}
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "https://connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+		function testAPI() {
+		  	console.log('Welcome!  Fetching your information.... ');
+		  	FB.api('/me', function(response) {
+			  	console.log('Successful login for: ' + response.name);
+				console.log(response);
+				document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
+
+				$(".facelogin").hide();
+
+				$("#skjema").show();
+				$("#sendkommentar").css("display", "flex");
+
+				brukerid = response.id;
+				navn = response.name;
+				console.log(brukerid);
+
+
+
+				require([
+					"esri/layers/FeatureLayer",
+					"esri/Graphic",
+					"esri/tasks/QueryTask",
+					"esri/tasks/support/Query"
+					],
+					function(FeatureLayer, Graphic, QueryTask, Query) {
+						const featureLayer = new FeatureLayer({
+							url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
+							outFields: ["*"],
+							popupEnabled: false,
+							id: "feedbacklayer"
+						});
+
+
+						var query = featureLayer.createQuery();
+						query.where = "1=1";
+						query.outFields = ["*"];
+
+						featureLayer.queryFeatures(query).then(function(response) {
+							kommentarer = response.features;
+
+							console.log("Attributter");
+							console.log(kommentarer);
+							for (var x in kommentarer) {
+								var navnet = kommentarer[x].attributes.navn;
+								var en_comment = kommentarer[x].attributes.kommentar;
+								var bilde = kommentarer[x].attributes.bildeurl;
+								$("#kommentarfelt").append('<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div></div></div>');
+							};
+
+						});
+
+
+						function applyEdits(parametere) {
+							featureLayer.applyEdits(parametere).then(function(editsResult) {
+								// Get the objectId of the newly added feature.
+								// Call selectFeature function to highlight the new feature.
+								console.log(editsResult.addFeatureResults);
+								if (editsResult.addFeatureResults.length > 0) {
+									const objectId = editsResult.addFeatureResults[0].objectId;
+
+								};
+							}).then(function() {
+								//Tøm kommentar-textfeltet
+								$("#komment").val("");
+								$(".velkommen").css("display", "block");
+								$(".velkommen").delay(2000).css("display", "none");
+							}).catch(function(error) {
+								console.log("===============================================");
+								console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
+									error.message);
+								console.log("error = ", error);
+							 });
+						};
+
+
+
+						//Endre BildeURL-atributten i punkt-objektet.
+						function getMyPic(callback) {
+							FB.api('/' + brukerid + '/picture', 'GET', {"redirect": "false"},
+							 	function(response) {callback(response.data.url)}
+							);
+						};
+
+
+						editFeature = new Graphic({
+						  geometry: {
+							 type: "point", // autocasts as new Point()
+							 longitude: 0.0,
+							 latitude: 0.0
+						  },
+						  attributes: {
+							 "userid": brukerid,
+							 "kommentar": "none",
+							 "navn": navn,
+							 "epost": "none",
+							 "bildeurl": "",
+							 "timedate": ""
+						  };
+						});
+
+
+						function getPic() {
+							getMyPic(function(url) {
+								console.log("BildeUrl", url)
+								//picurl = url;
+								editFeature.attributes.bildeurl = url;
+						  });
+						};
+						//Kall funkjsonen som skal endre på URLatributten. 
+						getPic();
+
+						// Setup the applyEdits parameter with adds.
+						const edits = {
+						  addFeatures: [editFeature]
+						};
+
+
+						$("#sendkommentar").on('click', function(edits) {
+							editFeature.attributes.kommentar = $("#komment").val();
+							editFeature.attributes.timedate = new Date().toLocaleString();
+							applyEdits({
+								addFeatures: [editFeature]
+							});
+						});
+
+					}
+				) //End of Arcgis JS API
+			})
+		}
+
+
 
   </script>
 
