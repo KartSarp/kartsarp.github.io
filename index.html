@@ -367,7 +367,7 @@
 						// Logged into your app and Facebook.
 						$("#fblogin").hide();
 						document.getElementById('status').innerHTML = 'Du er nå logget inn.';
-						$("#skjema").show();
+						$("#skjema").show()
 						innlogget();
 					} else {
 						// The person is not logged into your app or we are unable to tell.
@@ -388,8 +388,11 @@
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 
-
-
+				function checkLoginState() {
+					FB.getLoginStatus(function(response) {
+						statusChangeCallback(response);
+					});
+				};
 
 				window.fbAsyncInit = function() {
 					FB.init({
@@ -407,12 +410,7 @@
 
 				};
 
-				function checkLoginState() {
-					FB.getLoginStatus(function(response) {
-						statusChangeCallback(response);
-					});
-				};
-				
+
 				const featureLayer = new FeatureLayer({
 					url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
 					outFields: ["*"],
@@ -420,7 +418,7 @@
 					id: "feedbacklayer"
 				});
 
-				$("#facelogin").on("click", checkLoginState());
+
 
 				var query = featureLayer.createQuery();
 				query.where = "1=1";
@@ -574,10 +572,12 @@
   </div>
   <div id="comment">
 	 <div id="fblogin">
-		<button 
+		<fb:login-button size="xlarge"
+		  scope="public_profile,email"
+		  onlogin="checkLoginState();"
 		  class="facelogin">
 		  Logg inn
-		</button>
+		</fb:login-button>
 	 </div>
 	 <div id="status">
 	 </div>
