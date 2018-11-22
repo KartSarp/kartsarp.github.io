@@ -393,7 +393,7 @@
 						statusChangeCallback(response);
 					});
 				};
-				$("#facelogin").on("click", checkLoginState());
+				
 
 				window.fbAsyncInit = function() {
 					FB.init({
@@ -419,7 +419,7 @@
 					id: "feedbacklayer"
 				});
 
-
+				$("#facelogin").on("click", checkLoginState());
 
 				var query = featureLayer.createQuery();
 				query.where = "1=1";
