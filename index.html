@@ -286,7 +286,7 @@
 
   </style>
   <script type="text/javascript">
-	 $(function() {
+
 		require([
 		  "esri/WebScene",
 		  "esri/views/SceneView",
@@ -337,14 +337,14 @@
 		});
 
 		
-
-	 });
 	 
   </script>
 </head>
 <body>
 
   <script>
+
+
 	 // This is called with the results from from FB.getLoginStatus().
 	 function statusChangeCallback(response) {
 		console.log('statusChangeCallback');
@@ -411,29 +411,13 @@
 
 
 
-
-
-
-		  
-
-
 		  require([
 		  "esri/layers/FeatureLayer",
 		  "esri/Graphic",
 		  "esri/tasks/QueryTask",
 		  "esri/tasks/support/Query"
 		  ],
-		  function(
-			 FeatureLayer, Graphic, QueryTask, Query
-		  ) {
-
-
-
-
-
-
-
-
+		  function(FeatureLayer, Graphic, QueryTask, Query) {
 
 
 			 const featureLayer = new FeatureLayer({
@@ -549,6 +533,7 @@
 
 		});
 	 };
+
 
 
 
