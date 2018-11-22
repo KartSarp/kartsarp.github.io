@@ -240,6 +240,7 @@
           overflow: auto; /* Enable scroll if needed */
           background-color: transparent;
           z-index: 99;
+          display: none;
       }
 
       /* Modal Content/Box */
@@ -481,7 +482,9 @@
               }
             }).then(function() {
               //Tøm kommentar-textfeltet
-              $("#komment").val("")
+              $("#komment").val("");
+              $(".velkommen").show();
+              $(".velkommen").delay(2000).hide();
             })
             //Throw errorer som måtte dukke opp i consollen
             .catch(function(error) {
@@ -538,11 +541,10 @@
 
 
           $("#sendkommentar").on('click', function(edits) {
-            $(".velkommen").show();
             editFeature.attributes.kommentar = $("#komment").val();
             editFeature.attributes.timedate = new Date().toLocaleString();
             applyEdits({addFeatures: [editFeature]});
-            $(".velkommen").delay(3000).hide();
+            
           });
 
         });
@@ -597,7 +599,7 @@
 
     <div id="kommentarfelt"></div>
 
-    <div id="velkomstBoks" class="velkommen" style="background-color: rgba(0, 0, 0, 0.5); display: none;">
+    <div id="velkomstBoks" class="velkommen" style="background-color: rgba(0, 0, 0, 0.5)">
 
       <!-- Modal content -->
       <div class="velkommen-innh">
