@@ -11,276 +11,276 @@
   <script src="https://js.arcgis.com/4.9/"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <style>
-      html,
-      body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-      }
-      #u_0_0 {
-        width:auto;
-      }
+		html,
+		body {
+		  height: 100%;
+		  width: 100%;
+		  margin: 0;
+		}
+		#u_0_0 {
+		  width:auto;
+		}
 
-      #viewDiv {
-        float: left;
-        padding: 0;
-        margin: 0;
-        height: -webkit-calc(100% - 70px);
-        height: -moz-calc(100% - 70px);
-        height: calc(100% - 70px);
-        width: 100%;
-      }
-      #comment{
-        float: left;
-        height: 100%;
-        width: 30%;
-      }
-      #knapp_esc, #knapp_opn {
-        pointer-events: auto;
-        font-size: x-large;
-        text-align: center;
-        border: 1px solid #dfdfdf;
-        background: white;
-        height: 30px;
-        width: 30px;
-        position: absolute;
-        z-index: 80;
-        box-shadow: 1px 1px 1px grey;
-        line-height: normal;
-      }
-      #knapp_esc{
-        bottom: -40px;
-      }
-      #knapp_opn {
-        right: 0px;
-        background-image: 'layers.png';
-      }
-      #knapp_esc:hover {
-        cursor: pointer;
-      }
-      #knapp_opn:hover {
-        cursor: pointer;
-      }
+		#viewDiv {
+		  float: left;
+		  padding: 0;
+		  margin: 0;
+		  height: -webkit-calc(100% - 70px);
+		  height: -moz-calc(100% - 70px);
+		  height: calc(100% - 70px);
+		  width: 100%;
+		}
+		#comment{
+		  float: left;
+		  height: 100%;
+		  width: 30%;
+		}
+		#knapp_esc, #knapp_opn {
+		  pointer-events: auto;
+		  font-size: x-large;
+		  text-align: center;
+		  border: 1px solid #dfdfdf;
+		  background: white;
+		  height: 30px;
+		  width: 30px;
+		  position: absolute;
+		  z-index: 80;
+		  box-shadow: 1px 1px 1px grey;
+		  line-height: normal;
+		}
+		#knapp_esc{
+		  bottom: -40px;
+		}
+		#knapp_opn {
+		  right: 0px;
+		  background-image: 'layers.png';
+		}
+		#knapp_esc:hover {
+		  cursor: pointer;
+		}
+		#knapp_opn:hover {
+		  cursor: pointer;
+		}
 
-      .cont {
-        height: 100%;
-        width: 70%;
-        float: left;
-      }
-      #tittel {
-        height: 70px;
-        background-color: #007aad;
-      }
-      .flex-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+		.cont {
+		  height: 100%;
+		  width: 70%;
+		  float: left;
+		}
+		#tittel {
+		  height: 70px;
+		  background-color: #007aad;
+		}
+		.flex-container {
+		  display: flex;
+		  align-items: center;
+		  justify-content: center;
+		}
 
-      #navn {
-        width: 70%;
-        height: 100%;
-        float: left;
-        font-size: xx-large;
-        font-family: sans-serif;
-        color: white;
-      }
-      .lenker {
-        width: 30%;
-        height: 100%;
-        float: left;
-        font-size: large;
-        font-family: sans-serif;
-        color: black;
-      }
-      #navn {
+		#navn {
+		  width: 70%;
+		  height: 100%;
+		  float: left;
+		  font-size: xx-large;
+		  font-family: sans-serif;
+		  color: white;
+		}
+		.lenker {
+		  width: 30%;
+		  height: 100%;
+		  float: left;
+		  font-size: large;
+		  font-family: sans-serif;
+		  color: black;
+		}
+		#navn {
 
-        /* Internet Explorer 10 */
-        display:-ms-flexbox;
-        -ms-flex-pack:center;
-        -ms-flex-align:center;
+		  /* Internet Explorer 10 */
+		  display:-ms-flexbox;
+		  -ms-flex-pack:center;
+		  -ms-flex-align:center;
 
-        /* Firefox */
-        display:-moz-box;
-        -moz-box-pack:center;
-        -moz-box-align:center;
+		  /* Firefox */
+		  display:-moz-box;
+		  -moz-box-pack:center;
+		  -moz-box-align:center;
 
-        /* Safari, Opera, and Chrome */
-        display:-webkit-box;
-        -webkit-box-pack:center;
-        -webkit-box-align:center;
+		  /* Safari, Opera, and Chrome */
+		  display:-webkit-box;
+		  -webkit-box-pack:center;
+		  -webkit-box-align:center;
 
-        /* W3C */
-        display:box;
-        box-pack:center;
-        box-align:center;
-      }
+		  /* W3C */
+		  display:box;
+		  box-pack:center;
+		  box-align:center;
+		}
 
-      img {
-        vertical-align: unset;
-      }
+		img {
+		  vertical-align: unset;
+		}
 
-      .planknapp {
-        float: right;
-        margin-right: 20px;
-        margin-top: 14px;
-
-
-      }
-
-      #sendkommentar {
-        margin: 15px;
-        margin-left: auto;
-        margin-right: auto;
-        display: none; 
+		.planknapp {
+		  float: right;
+		  margin-right: 20px;
+		  margin-top: 14px;
 
 
+		}
 
-
-
-      }
-      #skjema {
-        display: none;
-      }
-      form {
-        width: 90%;
-        margin: auto;
-      }
-      #komment {
-        height: 75px;
-        width: 100%;
-
-      }
-      #sendkommentar:hover {
-        cursor: pointer;
-      }
-      #kommentarfelt {
-        width: 100%;
-        height: auto;
-        max-height: calc(100% - 200px);
-        overflow: scroll;
-        /*display: flex;*/
-        flex-direction: column; 
-      }
-      
+		#sendkommentar {
+		  margin: 15px;
+		  margin-left: auto;
+		  margin-right: auto;
+		  display: none; 
 
 
 
 
-      .singlecomment {
-        width: 90%;
-        min-height: 70px;
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        margin-bottom: 10px;
-        border-bottom: 1px solid lightgrey;
-        background-color: white;
-        background-image: linear-gradient(#e3e0e06b, #d3d3d345, #ededed59);
 
+		}
+		#skjema {
+		  display: none;
+		}
+		form {
+		  width: 90%;
+		  margin: auto;
+		}
+		#komment {
+		  height: 75px;
+		  width: 100%;
 
-      }
-      .bilde {
-
-        width: 50px;
-        float: left;
-        margin-top: auto;
-        margin-bottom: auto;
-        margin-right: 5px;
-
-      }
-      .tekst {
-          width: calc(100% - 55px);
-          float: left;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-      }
-
-      .navn {
-
-        width: 100%;
-
-      }
-      .komm {
-
-        width: 100%;
-
-        font-size: small;
-      }
-
-      #fblogin {
-          display: block;
-          margin: auto;
-          width: 153px;
-          margin-left: auto;
-          margin-right: auto;
-      }
-
-      #status {
-        text-align: center;
-        margin-bottom: 10px;
-        color: #00b94d;
-        font-size: small;
-      }
-
-      #fblogin {
-        display: block;
-        margin: auto;
-      }
+		}
+		#sendkommentar:hover {
+		  cursor: pointer;
+		}
+		#kommentarfelt {
+		  width: 100%;
+		  height: auto;
+		  max-height: calc(100% - 200px);
+		  overflow: scroll;
+		  /*display: flex;*/
+		  flex-direction: column; 
+		}
+		
 
 
 
-      .velkommen {
-          position: fixed; /* Stay in place */
-          left: 0;
-          top: 0;
-          width: 100%; /* Full width */
-          height: 100%; /* Full height */
-          overflow: auto; /* Enable scroll if needed */
-          background-color: transparent;
-          z-index: 99;
 
-      }
+		.singlecomment {
+		  width: 90%;
+		  min-height: 70px;
+		  margin-left: auto;
+		  margin-right: auto;
+		  display: flex;
+		  margin-bottom: 10px;
+		  border-bottom: 1px solid lightgrey;
+		  background-color: white;
+		  background-image: linear-gradient(#e3e0e06b, #d3d3d345, #ededed59);
 
-      /* Modal Content/Box */
-      .velkommen-innh {
-          background-color: #fefefe;
-          margin: 5% auto; /* 5% from the top and centered */
-          padding: 20px;
-          border: 1px solid #888;
-          max-height: 90%;
-          max-width: 300px; /* Could be more or less, depending on screen size */
-          overflow: auto;
-      }
 
-      /* On screens that are 992px or less, set the background color to blue */
-      @media screen and (max-width: 992px) {
-        .cont {
-          height: 65%;
-          width: 100%;
-          float: left;
-        }   
-        #comment{
-          float: left;
-          height: 35%;
-          width: 100%;
-        }
-      }
+		}
+		.bilde {
 
-      /* On screens that are 600px or less, set the background color to olive */
-      @media screen and (max-width: 600px) {
-        .cont {
-          height: 60%;
-          width: 100%;
-          float: left;
-        }
+		  width: 50px;
+		  float: left;
+		  margin-top: auto;
+		  margin-bottom: auto;
+		  margin-right: 5px;
 
-        #comment{
-          height: 40%;
-          width: 100%;
-        }
-      }
+		}
+		.tekst {
+			 width: calc(100% - 55px);
+			 float: left;
+			 display: flex;
+			 flex-direction: column;
+			 justify-content: center;
+		}
+
+		.navn {
+
+		  width: 100%;
+
+		}
+		.komm {
+
+		  width: 100%;
+
+		  font-size: small;
+		}
+
+		#fblogin {
+			 display: block;
+			 margin: auto;
+			 width: 153px;
+			 margin-left: auto;
+			 margin-right: auto;
+		}
+
+		#status {
+		  text-align: center;
+		  margin-bottom: 10px;
+		  color: #00b94d;
+		  font-size: small;
+		}
+
+		#fblogin {
+		  display: block;
+		  margin: auto;
+		}
+
+
+
+		.velkommen {
+			 position: fixed; /* Stay in place */
+			 left: 0;
+			 top: 0;
+			 width: 100%; /* Full width */
+			 height: 100%; /* Full height */
+			 overflow: auto; /* Enable scroll if needed */
+			 background-color: transparent;
+			 z-index: 99;
+
+		}
+
+		/* Modal Content/Box */
+		.velkommen-innh {
+			 background-color: #fefefe;
+			 margin: 5% auto; /* 5% from the top and centered */
+			 padding: 20px;
+			 border: 1px solid #888;
+			 max-height: 90%;
+			 max-width: 300px; /* Could be more or less, depending on screen size */
+			 overflow: auto;
+		}
+
+		/* On screens that are 992px or less, set the background color to blue */
+		@media screen and (max-width: 992px) {
+		  .cont {
+			 height: 65%;
+			 width: 100%;
+			 float: left;
+		  }   
+		  #comment{
+			 float: left;
+			 height: 35%;
+			 width: 100%;
+		  }
+		}
+
+		/* On screens that are 600px or less, set the background color to olive */
+		@media screen and (max-width: 600px) {
+		  .cont {
+			 height: 60%;
+			 width: 100%;
+			 float: left;
+		  }
+
+		  #comment{
+			 height: 40%;
+			 width: 100%;
+		  }
+		}
 
 
 
@@ -289,316 +289,296 @@
   <script type="text/javascript">
 
 
-      require([
-        "esri/WebScene",
-        "esri/views/SceneView",
-        "esri/layers/SceneLayer",
-        "esri/widgets/Legend",
-        "esri/widgets/LayerList"
-      ], function(WebScene, SceneView, SceneLayer, Legend, LayerList) {
+		require([
+		  "esri/WebScene",
+		  "esri/views/SceneView",
+		  "esri/layers/SceneLayer",
+		  "esri/widgets/Legend",
+		  "esri/widgets/LayerList"
+		], function(WebScene, SceneView, SceneLayer, Legend, LayerList) {
 
 
 
-        var webscene = new WebScene({
-          portalItem: {
-            id: "7cc83e9889a74c408d480331ae1c63dc"
-          }
+		  var webscene = new WebScene({
+			 portalItem: {
+				id: "7cc83e9889a74c408d480331ae1c63dc"
+			 }
 
-        });
+		  });
 
-        var view = new SceneView({
-          container: "viewDiv",
-          map: webscene
-        });
+		  var view = new SceneView({
+			 container: "viewDiv",
+			 map: webscene
+		  });
 
-        view.when(function() {
-          var layerList = new LayerList({
-                  view: view
-          });
-          view.ui.add(layerList, "top-right");
-          let hoyde = $(".esri-ui-top-right").height();
-          console.log(hoyde);
-          $(".esri-ui-top-right").hide();
-          $(".esri-ui-top-right").append("<div id='knapp_esc'>&times;</div>");
-          $(".esri-ui-corner-container").append("<div id='knapp_opn'><img src='http://kart.sarpsborg.com/app/comment/img/layerlist.svg'/></div>")
-
-
-
-          $("#knapp_esc").on('click', function(){
-            $(".esri-ui-top-right").hide(); 
-            $("#knapp_opn").show();
-
-            
-          });
-          $("#knapp_opn").on('click', function(){
-            $(".esri-ui-top-right").show();
-            $("#knapp_opn").hide();
-          });
-
-        });
-      });
+		  view.when(function() {
+			 var layerList = new LayerList({
+						view: view
+			 });
+			 view.ui.add(layerList, "top-right");
+			 let hoyde = $(".esri-ui-top-right").height();
+			 console.log(hoyde);
+			 $(".esri-ui-top-right").hide();
+			 $(".esri-ui-top-right").append("<div id='knapp_esc'>&times;</div>");
+			 $(".esri-ui-corner-container").append("<div id='knapp_opn'><img src='http://kart.sarpsborg.com/app/comment/img/layerlist.svg'/></div>")
 
 
-    
+
+			 $("#knapp_esc").on('click', function(){
+				$(".esri-ui-top-right").hide(); 
+				$("#knapp_opn").show();
+
+				
+			 });
+			 $("#knapp_opn").on('click', function(){
+				$(".esri-ui-top-right").show();
+				$("#knapp_opn").hide();
+			 });
+
+		  });
+		});
+
+
+	 
   </script>
 </head>
 <body>
 
   <script> 
-    $(function() {
-          $(".velkommen").hide();
+	 $(function() {
+			 $(".velkommen").hide();
 
 
-          // This is called with the results from from FB.getLoginStatus().
-          function statusChangeCallback(response) {
-            console.log('statusChangeCallback');
-            console.log(response);
-            // The response object is returned with a status field that lets the
-            // app know the current login status of the person.
-            // Full docs on the response object can be found in the documentation
-            // for FB.getLoginStatus().
-            if (response.status === 'connected') {
-              // Logged into your app and Facebook.
-              testAPI();
-            } else {
-              // The person is not logged into your app or we are unable to tell.
-              document.getElementById('status').innerHTML = 'Please log ' +
-                'into this app.';
-            }
-          };
+			 // This is called with the results from from FB.getLoginStatus().
+			 function statusChangeCallback(response) {
+				console.log('statusChangeCallback');
+				console.log(response);
+				// The response object is returned with a status field that lets the
+				// app know the current login status of the person.
+				// Full docs on the response object can be found in the documentation
+				// for FB.getLoginStatus().
+				if (response.status === 'connected') {
+				  // Logged into your app and Facebook.
+				  testAPI();
+				} else {
+				  // The person is not logged into your app or we are unable to tell.
+				  document.getElementById('status').innerHTML = 'Please log ' +
+					 'into this app.';
+				}
+			 };
 
-          function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-              statusChangeCallback(response);
-            });
-          };
+			 function checkLoginState() {
+				FB.getLoginStatus(function(response) {
+				  statusChangeCallback(response);
+				});
+			 };
 
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId: '371994680203106',
-              cookie: true,
-              xfbml: true,
-              version: 'v3.2'
-            });
+			 window.fbAsyncInit = function() {
+				FB.init({
+				  appId: '371994680203106',
+				  cookie: true,
+				  xfbml: true,
+				  version: 'v3.2'
+				});
 
-            FB.AppEvents.logPageView();
+				FB.AppEvents.logPageView();
 
-            FB.getLoginStatus(function(response) {
-              statusChangeCallback(response);
-            });
+				FB.getLoginStatus(function(response) {
+				  statusChangeCallback(response);
+				});
 
-          };
+			 };
 
-          (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-              return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
+			 (function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {
+				  return;
+				}
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "https://connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			 }(document, 'script', 'facebook-jssdk'));
 
-          function testAPI() {
-              console.log('Welcome!  Fetching your information.... ');
-              FB.api('/me', function(response) {
-                    console.log('Successful login for: ' + response.name);
-                    console.log(response);
-                    document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
+			function testAPI() {
+			  	console.log('Welcome!  Fetching your information.... ');
+			  	FB.api('/me', function(response) {
+				  	console.log('Successful login for: ' + response.name);
+					console.log(response);
+					document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
 
-                    $(".facelogin").hide();
+					$(".facelogin").hide();
 
-                    $("#skjema").show();
-                    $("#sendkommentar").css("display", "flex");
+					$("#skjema").show();
+					$("#sendkommentar").css("display", "flex");
 
-                    brukerid = response.id;
-                    navn = response.name;
-                    console.log(brukerid);
-
-
-
-                    require([
-                        "esri/layers/FeatureLayer",
-                        "esri/Graphic",
-                        "esri/tasks/QueryTask",
-                        "esri/tasks/support/Query"
-                      ],
-                      function(
-                        FeatureLayer, Graphic, QueryTask, Query
-                      ) {
-
-
-                        const featureLayer = new FeatureLayer({
-                          url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
-                          outFields: ["*"],
-                          popupEnabled: false,
-                          id: "feedbacklayer"
-                        });
+					brukerid = response.id;
+					navn = response.name;
+					console.log(brukerid);
 
 
 
-                        var query = featureLayer.createQuery();
-                        query.where = "1=1";
-                        query.outFields = ["*"];
-
-                        featureLayer.queryFeatures(query)
-                          .then(function(response) {
-                            kommentarer = response.features;
-
-                            console.log("Attributter");
-                            console.log(kommentarer);
-                            for (var x in kommentarer) {
-                              var navnet = kommentarer[x].attributes.navn;
-                              var en_comment = kommentarer[x].attributes.kommentar;
-                              var bilde = kommentarer[x].attributes.bildeurl;
-                              $("#kommentarfelt").append(
-                                '<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div></div></div>');
-                            };
-
-                          });
+					require([
+						"esri/layers/FeatureLayer",
+						"esri/Graphic",
+						"esri/tasks/QueryTask",
+						"esri/tasks/support/Query"
+						],
+						function(FeatureLayer, Graphic, QueryTask, Query) {
+							const featureLayer = new FeatureLayer({
+								url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
+								outFields: ["*"],
+								popupEnabled: false,
+								id: "feedbacklayer"
+							});
 
 
+							var query = featureLayer.createQuery();
+							query.where = "1=1";
+							query.outFields = ["*"];
+
+							featureLayer.queryFeatures(query).then(function(response) {
+								kommentarer = response.features;
+
+								console.log("Attributter");
+								console.log(kommentarer);
+								for (var x in kommentarer) {
+									var navnet = kommentarer[x].attributes.navn;
+									var en_comment = kommentarer[x].attributes.kommentar;
+									var bilde = kommentarer[x].attributes.bildeurl;
+									$("#kommentarfelt").append('<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div></div></div>');
+								};
+
+							});
 
 
-                        function applyEdits(parametere) {
-                          featureLayer.applyEdits(parametere).then(function(editsResult) {
-                              // Get the objectId of the newly added feature.
-                              // Call selectFeature function to highlight the new feature.
-                              console.log(editsResult.addFeatureResults);
-                              if (editsResult.addFeatureResults.length > 0) {
-                                const objectId = editsResult.addFeatureResults[0].objectId;
+							function applyEdits(parametere) {
+								featureLayer.applyEdits(parametere).then(function(editsResult) {
+									// Get the objectId of the newly added feature.
+									// Call selectFeature function to highlight the new feature.
+									console.log(editsResult.addFeatureResults);
+									if (editsResult.addFeatureResults.length > 0) {
+										const objectId = editsResult.addFeatureResults[0].objectId;
 
-                              }
-                            }).then(function() {
-                              //Tøm kommentar-textfeltet
-                              $("#komment").val("");
-                              $(".velkommen").css("display", "block");
-                              $(".velkommen").delay(2000).css("display", "none");
-                            })
-                            //Throw errorer som måtte dukke opp i consollen
-                            .catch(function(error) {
-                              console.log("===============================================");
-                              console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
-                                error.message);
-                              console.log("error = ", error);
-                            });
-                        };
+									};
+								}).then(function() {
+									//Tøm kommentar-textfeltet
+									$("#komment").val("");
+									$(".velkommen").css("display", "block");
+									$(".velkommen").delay(2000).css("display", "none");
+								}).catch(function(error) {
+									console.log("===============================================");
+									console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
+										error.message);
+									console.log("error = ", error);
+								 });
+							};
 
 
 
-                        //Endre BildeURL-atributten i punkt-objektet.
-                        function getMyPic(callback) {
-                          FB.api('/' + brukerid + '/picture', 'GET', {
-                              "redirect": "false"
-                            },
-                            function(response) {
-                              callback(response.data.url);
-                            }
-                          )
-                        };
+							//Endre BildeURL-atributten i punkt-objektet.
+							function getMyPic(callback) {
+								FB.api('/' + brukerid + '/picture', 'GET', {"redirect": "false"},
+								 	function(response) {callback(response.data.url)}
+								);
+							};
 
 
-                        editFeature = new Graphic({
-                          geometry: {
-                            type: "point", // autocasts as new Point()
-                            longitude: 0.0,
-                            latitude: 0.0
-                          },
-                          attributes: {
-                            "userid": brukerid,
-                            "kommentar": "none",
-                            "navn": navn,
-                            "epost": "none",
-                            "bildeurl": "",
-                            "timedate": ""
-                          }
-                        });
+							editFeature = new Graphic({
+							  geometry: {
+								 type: "point", // autocasts as new Point()
+								 longitude: 0.0,
+								 latitude: 0.0
+							  },
+							  attributes: {
+								 "userid": brukerid,
+								 "kommentar": "none",
+								 "navn": navn,
+								 "epost": "none",
+								 "bildeurl": "",
+								 "timedate": ""
+							  };
+							});
 
 
-                        function getPic() {
-                          getMyPic(function(url) {
-                            console.log("BildeUrl", url)
-                              //picurl = url;
-                            editFeature.attributes.bildeurl = url;
-                          });
-                        };
-                        //Kall funkjsonen som skal endre på URLatributten. 
-                        getPic();
+							function getPic() {
+								getMyPic(function(url) {
+									console.log("BildeUrl", url)
+									//picurl = url;
+									editFeature.attributes.bildeurl = url;
+							  });
+							};
+							//Kall funkjsonen som skal endre på URLatributten. 
+							getPic();
 
-                        // Setup the applyEdits parameter with adds.
-                        const edits = {
-                          addFeatures: [editFeature]
-                        };
-
-
-                        $("#sendkommentar").on('click', function(edits) {
-                          editFeature.attributes.kommentar = $("#komment").val();
-                          editFeature.attributes.timedate = new Date().toLocaleString();
-                          applyEdits({
-                            addFeatures: [editFeature]
-                          });
-
-                        });
-
-                      }); //End of Arcgis JS API
-
-                  };
-          };
-    });
-    
+							// Setup the applyEdits parameter with adds.
+							const edits = {
+							  addFeatures: [editFeature]
+							};
 
 
+							$("#sendkommentar").on('click', function(edits) {
+								editFeature.attributes.kommentar = $("#komment").val();
+								editFeature.attributes.timedate = new Date().toLocaleString();
+								applyEdits({
+									addFeatures: [editFeature]
+								});
+							});
+
+						}
+					); //End of Arcgis JS API
+				});
+			};
 
   </script>
 
   <div class="cont">
-    <div id="tittel" class="flex-container">
-      <div id="navn" class="flex-item">Grålum Allé</div>
+	 <div id="tittel" class="flex-container">
+		<div id="navn" class="flex-item">Grålum Allé</div>
 
-      <div class="lenker flex-item">
-        <a class="planknapp" href='http://tema.webatlas.no/sarpsborg/planinnsyn?planid=22076' target="_blank">
-          <button  class="w3-button w3-white w3-border-white w3-round-large" >Plandokumenter</button>
-        </a>
-      </div>
+		<div class="lenker flex-item">
+		  <a class="planknapp" href='http://tema.webatlas.no/sarpsborg/planinnsyn?planid=22076' target="_blank">
+			 <button  class="w3-button w3-white w3-border-white w3-round-large" >Plandokumenter</button>
+		  </a>
+		</div>
 
-    </div>
-    <div id="viewDiv"></div>
+	 </div>
+	 <div id="viewDiv"></div>
   </div>
   
 
   </div>
   <div id="comment">
-    <div id="fblogin">
-      <fb:login-button size="xlarge"
-        scope="public_profile,email"
-        onlogin="checkLoginState();"
-        class="facelogin">
-        Logg inn
-      </fb:login-button>
-    </div>
-    <div id="status">
-    </div>
+	 <div id="fblogin">
+		<fb:login-button size="xlarge"
+		  scope="public_profile,email"
+		  onlogin="checkLoginState();"
+		  class="facelogin">
+		  Logg inn
+		</fb:login-button>
+	 </div>
+	 <div id="status">
+	 </div>
 
-    <form id="skjema">
-      <label for="komment">Din kommentar</label>
-      <input type="text" id="komment" name="komment" value="" placeholder="Skriv en kommentar...">
-    </form>
-    
+	 <form id="skjema">
+		<label for="komment">Din kommentar</label>
+		<input type="text" id="komment" name="komment" value="" placeholder="Skriv en kommentar...">
+	 </form>
+	 
 
-    <button id="sendkommentar" class="w3-btn w3-blue w3-border w3-border-red w3-round-large">Send kommentar</button>
+	 <button id="sendkommentar" class="w3-btn w3-blue w3-border w3-border-red w3-round-large">Send kommentar</button>
 
-    <div id="kommentarfelt"></div>
+	 <div id="kommentarfelt"></div>
 
-    <div id="velkomstBoks" class="velkommen" style="background-color: rgba(0, 0, 0, 0.5)">
+	 <div id="velkomstBoks" class="velkommen" style="background-color: rgba(0, 0, 0, 0.5)">
 
-      <!-- Modal content -->
-      <div class="velkommen-innh">
-        <b>Takk for din tilbakemelding</b>
-        
-      </div>
+		<!-- Modal content -->
+		<div class="velkommen-innh">
+		  <b>Takk for din tilbakemelding</b>
+		  
+		</div>
 
-    </div>
+	 </div>
 
   </div>
 
