@@ -428,14 +428,6 @@
         ) {
 
 
-
-
-
-
-
-
-
-
           const featureLayer = new FeatureLayer({
             url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
             outFields: ["*"],
@@ -463,7 +455,6 @@
                 var usrid = kommentarer[x].attributes.userid;
                 var navnet = kommentarer[x].attributes.navn;
                 var en_comment = kommentarer[x].attributes.kommentar;
-                var bildeurl;
                 //Endre BildeURL-atributten i punkt-objektet.
                 function getMyPic(callback){
                   FB.api('/'+usrid+'/picture','GET',{"redirect":"false"},
