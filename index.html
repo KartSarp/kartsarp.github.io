@@ -390,8 +390,10 @@
 				}(document, 'script', 'facebook-jssdk'));
 
 				function checkLoginState() {
+					console.log("kjører checkLoginState");
 					FB.getLoginStatus(function(response) {
 						statusChangeCallback(response);
+						console.log("kaller statusChangeCallback");
 					});
 				};
 
@@ -580,7 +582,7 @@
 	 <div id="fblogin">
 		<fb:login-button size="xlarge"
 		  scope="public_profile,email"
-		  
+		  onlogin="checkLoginState();"
 		  class="facelogin">
 		  Logg inn
 		</fb:login-button>
