@@ -516,7 +516,7 @@
               "navn": navn,
               "epost": "none",
               "bildeurl": "",
-              "timedate": new Date().toLocaleString()
+              "timedate": ""
             }
           });
 
@@ -538,10 +538,11 @@
 
 
           $("#sendkommentar").on('click', function(edits) {
-            $("#velkomstBoks").show();
+            $(".velkommen").show();
             editFeature.attributes.kommentar = $("#komment").val();
+            editFeature.attributes.timedate = new Date().toLocaleString();
             applyEdits({addFeatures: [editFeature]});
-            $("#velkomstBoks").delay(3000).hide();
+            $(".velkommen").delay(3000).hide();
           });
 
         });
