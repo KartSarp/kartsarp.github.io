@@ -147,9 +147,8 @@
 		  margin: auto;
 		}
 		#komment {
-		  height: 75px;
 		  width: 100%;
-
+		  height: 50px;
 		}
 		#sendkommentar:hover {
 		  cursor: pointer;
@@ -357,8 +356,7 @@
 				innlogget();
 			} else {
 				// The person is not logged into your app or we are unable to tell.
-				document.getElementById('status').innerHTML = 'Please log ' +
-					'into this app.';
+				document.getElementById('status').innerHTML = 'Logg inn med Facebook for å kommentere.';
 			}
 		};
 
@@ -578,7 +576,7 @@
 
 	 <form id="skjema">
 		<label for="komment">Din kommentar</label>
-		<input type="text" id="komment" name="komment" value="" placeholder="Skriv en kommentar...">
+		<textarea rows="3" type="text" id="komment" name="komment" value="" placeholder="Skriv en kommentar..."></textarea>
 	 </form>
 	 
 
