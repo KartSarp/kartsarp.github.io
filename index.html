@@ -452,13 +452,16 @@
               console.log("Attributter");
               console.log(kommentarer);
               for (var x in kommentarer) {
-                var usrid = kommentarer[x].attributes.userid;
-                var navnet = kommentarer[x].attributes.navn;
-                var en_comment = kommentarer[x].attributes.kommentar;
-                console.log(usrid);
+                brukerdata = {
+                  usrid: kommentarer[x].attributes.userid,
+                  navnet : kommentarer[x].attributes.navn,
+                  en_comment : kommentarer[x].attributes.kommentar,
+                  bildeurl : ""
+                }
+
                 //Endre BildeURL-atributten i punkt-objektet.
                 function getMyPic(callback){
-                  FB.api('/'+usrid+'/picture','GET',{"redirect":"false"},
+                  FB.api('/'+brukerdata.usrid+'/picture','GET',{"redirect":"false"},
                     function(response) {
                       callback(response.data.url);
                     }
@@ -467,13 +470,13 @@
                 function getPic(){
                   getMyPic(function(url){
                     console.log("BildeUrl", url)
-                    bildeurl = url;
+                    brukerdata.bildeurl = url;
                   });
                 };
                 //Kall funkjsonen som skal endre på URLatributten. 
                 getPic();
                 $("#kommentarfelt").append(
-                  '<div class="singlecomment"> <div class="bilde"><img src=""/></div><div class="tekst"><div class="navn"><b>'+navnet+'</b></div><div class="komm">'+en_comment+'</div></div></div>');
+                  '<div class="singlecomment"> <div class="bilde"><img src="'+brukerdata.bildeurl+'"/></div><div class="tekst"><div class="navn"><b>'+brukerdata.navnet+'</b></div><div class="komm">'+brukerdata.en_comment+'</div></div></div>');
               };
               
             });
