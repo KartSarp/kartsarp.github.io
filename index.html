@@ -365,6 +365,9 @@
 					// for FB.getLoginStatus().
 					if (response.status === 'connected') {
 						// Logged into your app and Facebook.
+						$("#fblogin").hide();
+						document.getElementById('status').innerHTML = 'Du er nå logget inn.';
+						$("#skjema").show();
 						innlogget();
 					} else {
 						// The person is not logged into your app or we are unable to tell.
@@ -569,12 +572,10 @@
   </div>
   <div id="comment">
 	 <div id="fblogin">
-		<fb:login-button size="xlarge"
-		  scope="public_profile,email"
-		  onlogin="checkLoginState();"
+		<button 
 		  class="facelogin">
 		  Logg inn
-		</fb:login-button>
+		</button>
 	 </div>
 	 <div id="status">
 	 </div>
