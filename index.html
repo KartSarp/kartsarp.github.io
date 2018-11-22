@@ -347,12 +347,13 @@
 
 
 		require([
+				"dojo/on",
 				"esri/layers/FeatureLayer",
 				"esri/Graphic",
 				"esri/tasks/QueryTask",
 				"esri/tasks/support/Query"
 			],
-			function(FeatureLayer, Graphic, QueryTask, Query) {
+			function(on, FeatureLayer, Graphic, QueryTask, Query) {
 
 
 				// This is called with the results from from FB.getLoginStatus().
@@ -410,7 +411,7 @@
 
 				};
 
-				$(".facelogin").attr("onlogin", "checkLoginState();")
+				on($(".facelogin"), "click", "checkLoginState();");
 
 				const featureLayer = new FeatureLayer({
 					url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
