@@ -240,7 +240,7 @@
           overflow: auto; /* Enable scroll if needed */
           background-color: transparent;
           z-index: 99;
-          display: none;
+
       }
 
       /* Modal Content/Box */
@@ -287,7 +287,8 @@
 
   </style>
   <script type="text/javascript">
-    $(function() {
+
+
       require([
         "esri/WebScene",
         "esri/views/SceneView",
@@ -337,15 +338,17 @@
         });
       });
 
-      
 
-    });
     
   </script>
 </head>
 <body>
 
-  <script>
+  <script> 
+    $(function() {
+      $(".velkommen").hide();
+
+
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
@@ -412,12 +415,6 @@
 
 
 
-
-
-
-        
-
-
         require([
         "esri/layers/FeatureLayer",
         "esri/Graphic",
@@ -427,14 +424,6 @@
         function(
           FeatureLayer, Graphic, QueryTask, Query
         ) {
-
-
-
-
-
-
-
-
 
 
           const featureLayer = new FeatureLayer({
@@ -503,7 +492,7 @@
               function(response) {
                 callback(response.data.url);
               }
-            );
+            )
           };
 
 
@@ -547,15 +536,11 @@
             
           });
 
-        });
+        });//End of Arcgis JS API
 
 
-      });
-    };
-
-
-
-
+      
+    
 
 
 
