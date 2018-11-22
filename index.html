@@ -388,12 +388,8 @@
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
 
-				function checkLoginState() {
-					FB.getLoginStatus(function(response) {
-						statusChangeCallback(response);
-					});
-				};
-				
+
+
 
 				window.fbAsyncInit = function() {
 					FB.init({
@@ -411,7 +407,12 @@
 
 				};
 
-
+				function checkLoginState() {
+					FB.getLoginStatus(function(response) {
+						statusChangeCallback(response);
+					});
+				};
+				
 				const featureLayer = new FeatureLayer({
 					url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/ddd_feedbacktest/FeatureServer/0",
 					outFields: ["*"],
