@@ -360,27 +360,7 @@
 			}
 		};
 
-		function checkLoginState() {
-			FB.getLoginStatus(function(response) {
-				statusChangeCallback(response);
-			});
-		};
 
-		window.fbAsyncInit = function() {
-			FB.init({
-				appId: '371994680203106',
-				cookie: true,
-				xfbml: true,
-				version: 'v3.2'
-			});
-
-			FB.AppEvents.logPageView();
-
-			FB.getLoginStatus(function(response) {
-				statusChangeCallback(response);
-			});
-
-		};
 
 		(function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0];
@@ -435,7 +415,7 @@
 					});
 
 
-								//Koden inne i Innlogget funksjonen kjøres bare for personer som har logget inn med facebook.
+				//Koden inne i Innlogget funksjonen kjøres bare for personer som har logget inn med facebook.
 				function innlogget() {
 					console.log('Welcome!  Fetching your information.... ');
 					FB.api('/me', function(response) {
@@ -539,6 +519,28 @@
 
 
 			});
+
+			function checkLoginState() {
+				FB.getLoginStatus(function(response) {
+					statusChangeCallback(response);
+				});
+			};
+
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId: '371994680203106',
+					cookie: true,
+					xfbml: true,
+					version: 'v3.2'
+				});
+
+				FB.AppEvents.logPageView();
+
+				FB.getLoginStatus(function(response) {
+					statusChangeCallback(response);
+				});
+
+			};
 
 
 
