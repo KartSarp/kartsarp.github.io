@@ -436,15 +436,22 @@
 					featureLayer.queryFeatures(query)
 						.then(function(response) {
 							kommentarer = response.features;
+							//SORTER INNLEGG ETTER DATO
+							kommentarer_sorted=datoer.sort(function(a,b) {
+							    return new Date(b.dato) - new Date(a.dato);
+							});
 
 							console.log("Attributter");
-							console.log(kommentarer);
-							for (var x in kommentarer) {
-								var navnet = kommentarer[x].attributes.navn;
-								var en_comment = kommentarer[x].attributes.kommentar;
-								var bilde = kommentarer[x].attributes.bildeurl;
+							console.log(kommentarer_sorted);
+							for (var x in kommentarer_sorted) {
+								var navnet = kommentarer_sorted[x].attributes.navn;
+								var en_comment = kommentarer_sorted[x].attributes.kommentar;
+								var bilde = kommentarer_sorted[x].attributes.bildeurl;
 								$("#kommentarfelt").append(
 									'<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div></div></div>');
+
+								
+								
 							};
 
 						});
@@ -519,7 +526,7 @@
 								"navn": navn,
 								"epost": "none",
 								"bildeurl": "",
-								"timedate": new Date().toLocaleString()
+								"timedate": new Date()
 							}
 						});
 
