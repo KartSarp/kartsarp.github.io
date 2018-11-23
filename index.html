@@ -483,7 +483,7 @@
 				function hentLikes() {
 					console.log(brukerid);
 					var likeQuery = likeTable.createQuery();
-					likeQuery.where = "userid="+brukerid;
+					likeQuery.where = "userid=10161172206135137";
 					likeQuery.outFields = ["*"];
 					likeTable.queryFeatures(likeQuery)
 						.then(function(response) {
