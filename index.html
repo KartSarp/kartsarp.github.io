@@ -504,8 +504,15 @@
 				function addComment(nydata) {
 					console.log(nydata);
 					var komment_id = num_com+1; 
+					var tiddato = new Date();
+					var day = tiddato.getDate();
+			      var month = tiddato.getMonth() + 1;
+			      var year = tiddato.getFullYear();
+			      var hours = tiddato.getHours();
+			      var minutes = tiddato.getMinutes();
+			      var tidspunkt = str(day)+"/"+str(month)+"&nbsp;"+str(hours)+":"+str(minutes);
 					$("#kommentarfelt").prepend(
-						'<div class="singlecomment gradient-border" id="'+komment_id+'"> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div></div></div>');
+						'<div class="singlecomment gradient-border" id="'+komment_id+'"> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div> <div class="dato">'+tidspunkt+'</div></div></div>');
 					setTimeout(function() {
 						$("#"+komment_id).removeClass("gradient-border");
 					},2500);
