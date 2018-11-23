@@ -465,7 +465,7 @@
 					console.log(nydata);
 
 					$("#kommentarfelt").prepend(
-						'<div class="singlecomment"> <div class="bilde"><img src="' + nydata.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.navn + '</b></div><div class="komm">' + nydata.kommentar + '</div></div></div>');
+						'<div class="singlecomment" id> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div></div></div>');
 				};
 
 
