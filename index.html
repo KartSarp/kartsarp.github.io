@@ -461,8 +461,10 @@
 				};
 				hentkommentarer();
 
-				function addComment() {
+				function addComment(nydata) {
 
+					$("#kommentarfelt").prepend(
+						'<div class="singlecomment"> <div class="bilde"><img src="' + nydata.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.navn + '</b></div><div class="komm">' + nydata.kommentar + '</div></div></div>');
 				};
 
 
@@ -497,7 +499,7 @@
 									//Tøm kommentar-textfeltet
 									$("#komment").val("");
 									$("#kommentarfelt").empty();
-									hentkommentarer();
+									//hentkommentarer();
 								})
 								//Throw errorer som måtte dukke opp i consollen
 								.catch(function(error) {
@@ -558,6 +560,7 @@
 						$("#sendkommentar").on('click', function(edits) {
 							editFeature.attributes.kommentar = $("#komment").val();
 							editFeature.attributes.timedate = new Date();
+							addComment(editFeature);
 							applyEdits({
 								addFeatures: [editFeature]
 							});
