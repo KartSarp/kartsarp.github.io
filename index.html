@@ -259,7 +259,6 @@
 
 		.gradient-border {
 		  --borderWidth: 3px;
-		  background: #1D1F20;
 		  position: relative;
 		  border-radius: var(--borderWidth);
 		}
@@ -508,7 +507,7 @@
 						'<div class="singlecomment gradient-border" id="'+komment_id+'"> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div></div></div>');
 					setTimeout(function() {
 						$("#"+komment_id).removeClass("gradient-border");
-					})
+					});
 					
 					num_com+=1;
 				};
