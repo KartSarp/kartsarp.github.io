@@ -508,7 +508,7 @@
 						'<div class="singlecomment gradient-border" id="'+komment_id+'"> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div></div></div>');
 					setTimeout(function() {
 						$("#"+komment_id).removeClass("gradient-border");
-					});
+					},2500);
 					
 					num_com+=1;
 				};
