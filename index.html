@@ -506,7 +506,10 @@
 					var komment_id = num_com+=1; 
 					$("#kommentarfelt").prepend(
 						'<div class="singlecomment gradient-border" id="'+komment_id+'"> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div></div></div>');
-					$("#"+komment_id).delay(2000).removeClass("gradient-border");
+					setTimeout(function() {
+						$("#"+komment_id).removeClass("gradient-border");
+					})
+					
 					num_com+=1;
 				};
 
@@ -604,10 +607,11 @@
 							editFeature.attributes.kommentar = $("#komment").val();
 							editFeature.attributes.timedate = new Date();
 							console.log(editFeature);
-							addComment(editFeature);
+							
 							applyEdits({
 								addFeatures: [editFeature]
 							});
+							addComment(editFeature);
 						});				
 					});
 				};
