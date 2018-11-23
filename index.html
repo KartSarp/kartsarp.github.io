@@ -437,8 +437,8 @@
 						.then(function(response) {
 							kommentarer = response.features;
 							//SORTER INNLEGG ETTER DATO
-							kommentarer_sorted=datoer.sort(function(a,b) {
-							    return new Date(b.dato) - new Date(a.dato);
+							kommentarer_sorted=kommentarer.sort(function(a,b) {
+							    return new Date(b.timedate) - new Date(a.timedate);
 							});
 
 							console.log("Attributter");
