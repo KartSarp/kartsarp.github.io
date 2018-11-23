@@ -495,9 +495,9 @@
 								let navnet = kommentarer_sorted[x].attributes.navn;
 								let en_comment = kommentarer_sorted[x].attributes.kommentar;
 								let bilde = kommentarer_sorted[x].attributes.bildeurl;
-								let tiddato = kommentarer_sorted[x].attributes.timedate;
+								let tiddato = new Date(kommentarer_sorted[x].attributes.timedate);
 								console.log("pre DatoTing");
-								var day = new Date(tiddato);
+								let day = tiddato.getDay();
 								console.log(day);
 								let month = tiddato.getMonth() + 1;
 								let year = tiddato.getFullYear();
