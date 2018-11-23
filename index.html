@@ -497,11 +497,12 @@
 								let bilde = kommentarer_sorted[x].attributes.bildeurl;
 								let tiddato = kommentarer_sorted[x].attributes.timedate;
 								let day = tiddato.getDate();
-						      let month = tiddato.getMonth() + 1;
-						      let year = tiddato.getFullYear();
-						      let hours = tiddato.getHours();
-						      let minutes = tiddato.getMinutes();
-						      let tidspunkt = ""+day+"."+month+"."+year+"&nbsp;"+hours+":"+minutes;
+								console.log(day);
+								let month = tiddato.getMonth() + 1;
+								let year = tiddato.getFullYear();
+								let hours = tiddato.getHours();
+								let minutes = tiddato.getMinutes();
+								let tidspunkt = ""+day+"."+month+"."+year+"&nbsp;"+hours+":"+minutes;
 								$("#kommentarfelt").append(
 									'<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div> <div class="dato">'+tidspunkt+'</div></div></div>');
 
@@ -518,10 +519,10 @@
 					var komment_id = num_com+1; 
 					let tiddato = new Date();
 					let day = tiddato.getDate();
-			      let month = tiddato.getMonth() + 1;
-			      let year = tiddato.getFullYear();
-			      let hours = tiddato.getHours();
-			      let minutes = tiddato.getMinutes();
+					let month = tiddato.getMonth() + 1;
+					let year = tiddato.getFullYear();
+					let hours = tiddato.getHours();
+					let minutes = tiddato.getMinutes();
 			      if (minutes <10) {
 			      	minutes="0"+minutes
 			      };
