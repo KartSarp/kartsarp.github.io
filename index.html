@@ -443,7 +443,7 @@
 							kommentarer_sorted=kommentarer.sort(function(a,b) {
 							    return new Date(b.timedate) - new Date(a.timedate);
 							});
-
+							kommentarer_sorted.reverse();
 							console.log("Attributter");
 							console.log(kommentarer_sorted);
 							for (var x in kommentarer_sorted) {
@@ -460,6 +460,11 @@
 						});
 				};
 				hentkommentarer();
+
+				function addComment() {
+
+				};
+
 
 				//Koden inne i Innlogget funksjonen kjøres bare for personer som har logget inn med facebook.
 				function innlogget() {
@@ -551,17 +556,12 @@
 
 
 						$("#sendkommentar").on('click', function(edits) {
-							$("#velkomstBoks").show();
 							editFeature.attributes.kommentar = $("#komment").val();
 							editFeature.attributes.timedate = new Date();
 							applyEdits({
 								addFeatures: [editFeature]
 							});
-							$("#velkomstBoks").delay(3000).hide();
 						});				
-
-
-
 					});
 				};
 
