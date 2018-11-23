@@ -529,7 +529,7 @@
 								"navn": navn,
 								"epost": "none",
 								"bildeurl": "",
-								"timedate": new Date()
+								"timedate": ""
 							}
 						});
 
@@ -553,6 +553,7 @@
 						$("#sendkommentar").on('click', function(edits) {
 							$("#velkomstBoks").show();
 							editFeature.attributes.kommentar = $("#komment").val();
+							editFeature.attributes.timedate = new Date();
 							applyEdits({
 								addFeatures: [editFeature]
 							});
