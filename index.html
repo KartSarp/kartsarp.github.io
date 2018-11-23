@@ -497,7 +497,7 @@
 								let bilde = kommentarer_sorted[x].attributes.bildeurl;
 								let tiddato = kommentarer_sorted[x].attributes.timedate;
 								console.log("pre DatoTing");
-								let day = tiddato.getDate();
+								var day = Date(tiddato);
 								console.log(day);
 								let month = tiddato.getMonth() + 1;
 								let year = tiddato.getFullYear();
