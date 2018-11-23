@@ -491,13 +491,19 @@
 							console.log("Attributter");
 							console.log(kommentarer_sorted);
 							num_com = kommentarer_sorted.length;
-							for (var x in kommentarer_sorted) {
-								var navnet = kommentarer_sorted[x].attributes.navn;
-								var en_comment = kommentarer_sorted[x].attributes.kommentar;
-								var bilde = kommentarer_sorted[x].attributes.bildeurl;
-								let tidspunkt = kommentarer_sorted[x].attributes.timedate;
+							for (let x in kommentarer_sorted) {
+								let navnet = kommentarer_sorted[x].attributes.navn;
+								let en_comment = kommentarer_sorted[x].attributes.kommentar;
+								let bilde = kommentarer_sorted[x].attributes.bildeurl;
+								let tiddato = kommentarer_sorted[x].attributes.timedate;
+								let day = tiddato.getDate();
+						      let month = tiddato.getMonth() + 1;
+						      let year = tiddato.getFullYear();
+						      let hours = tiddato.getHours();
+						      let minutes = tiddato.getMinutes();
+						      let tidspunkt = ""+day+"."+month+"."+year+"&nbsp;"+hours+":"+minutes;
 								$("#kommentarfelt").append(
-									'<div class="singlecomment gradient-border"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div> <div class="dato">'+tidspunkt+'</div></div></div>');
+									'<div class="singlecomment"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div> <div class="dato">'+tidspunkt+'</div></div></div>');
 
 								
 								
@@ -510,16 +516,16 @@
 				function addComment(nydata) {
 					console.log(nydata);
 					var komment_id = num_com+1; 
-					var tiddato = new Date();
-					var day = tiddato.getDate();
-			      var month = tiddato.getMonth() + 1;
-			      var year = tiddato.getFullYear();
-			      var hours = tiddato.getHours();
-			      var minutes = tiddato.getMinutes();
+					let tiddato = new Date();
+					let day = tiddato.getDate();
+			      let month = tiddato.getMonth() + 1;
+			      let year = tiddato.getFullYear();
+			      let hours = tiddato.getHours();
+			      let minutes = tiddato.getMinutes();
 			      if (minutes <10) {
 			      	minutes="0"+minutes
 			      };
-			      let tidspunkt = ""+day+"/"+month+"&nbsp;"+hours+":"+minutes;
+			      let tidspunkt = ""+day+"."+month+"."+year+"&nbsp;"+hours+":"+minutes;
 					$("#kommentarfelt").prepend(
 						'<div class="singlecomment gradient-border" id="'+komment_id+'"> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div> <div class="dato">'+tidspunkt+'</div></div></div>');
 					setTimeout(function() {
