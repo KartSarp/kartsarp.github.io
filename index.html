@@ -503,7 +503,7 @@
 
 				function addComment(nydata) {
 					console.log(nydata);
-					var komment_id = num_com+=1; 
+					var komment_id = num_com+1; 
 					$("#kommentarfelt").prepend(
 						'<div class="singlecomment gradient-border" id="'+komment_id+'"> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div></div></div>');
 					setTimeout(function() {
