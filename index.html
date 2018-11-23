@@ -561,6 +561,7 @@
 						$("#sendkommentar").on('click', function(edits) {
 							editFeature.attributes.kommentar = $("#komment").val();
 							editFeature.attributes.timedate = new Date();
+							console.log(editFeature);
 							addComment(editFeature);
 							applyEdits({
 								addFeatures: [editFeature]
