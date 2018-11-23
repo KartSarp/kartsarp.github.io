@@ -481,6 +481,7 @@
 
 
 				function hentLikes() {
+					console.log(brukerid);
 					var likeQuery = featureLayer.createQuery();
 					likeQuery.where = "userid="+brukerid;
 					likeQuery.outFields = ["*"];
