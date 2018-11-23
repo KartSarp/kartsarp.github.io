@@ -472,9 +472,23 @@
 					popupEnabled: false,
 					id: "feedbacklayer"
 				});
+				const likeTable = new FeatureLayer({
+					url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/likeTable/FeatureServer/0",
+					outFields: ["*"],
+					popupEnabled: false,
+					id: "likeTable"
+				});
 
 
-
+				function hentLikes() {
+					var likeQuery = featureLayer.createQuery();
+					likeQuery.where = "userid="+brukerid;
+					likeQuery.outFields = ["*"];
+					likeTable.queryFeatures(likeQuery)
+						.then(function(response) {
+							console.log(response);
+						});
+				};
 
 				var query = featureLayer.createQuery();
 				query.where = "1=1";
@@ -492,6 +506,10 @@
 							kommentarer_sorted.reverse();
 							console.log("Attributter");
 							console.log(kommentarer_sorted);
+
+
+							hentLikes();
+
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
 								let navnet = kommentarer_sorted[x].attributes.navn;
