@@ -270,7 +270,7 @@
 		  left: calc(-1 * var(--borderWidth));
 		  height: calc(100% + var(--borderWidth) * 2);
 		  width: calc(100% + var(--borderWidth) * 2);
-		  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+		  background: linear-gradient(60deg, #5073b8, #1098ad, #07b39b, #6fba82);
 		  border-radius: calc(2 * var(--borderWidth));
 		  z-index: -1;
 		  animation: animatedgradient 3s ease alternate infinite;
@@ -506,7 +506,8 @@
 					var komment_id = num_com+=1; 
 					$("#kommentarfelt").prepend(
 						'<div class="singlecomment gradient-border" id="'+komment_id+'"> <div class="bilde"><img src="' + nydata.attributes.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.attributes.navn + '</b></div><div class="komm">' + nydata.attributes.kommentar + '</div></div></div>');
-
+					$("#"+komment_id).delay(2000).removeClass("gradient-border");
+					num_com+=1;
 				};
 
 
