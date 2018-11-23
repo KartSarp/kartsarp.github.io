@@ -462,6 +462,7 @@
 				hentkommentarer();
 
 				function addComment(nydata) {
+					console.log(nydata);
 
 					$("#kommentarfelt").prepend(
 						'<div class="singlecomment"> <div class="bilde"><img src="' + nydata.bildeurl + '"/></div><div class="tekst"><div class="navn"><b>' + nydata.navn + '</b></div><div class="komm">' + nydata.kommentar + '</div></div></div>');
@@ -498,7 +499,7 @@
 								}).then(function() {
 									//Tøm kommentar-textfeltet
 									$("#komment").val("");
-									$("#kommentarfelt").empty();
+									//$("#kommentarfelt").empty();
 									//hentkommentarer();
 								})
 								//Throw errorer som måtte dukke opp i consollen
