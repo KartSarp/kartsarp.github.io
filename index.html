@@ -491,7 +491,7 @@
 							console.log("Attributter");
 							console.log(kommentarer_sorted);
 							num_com = kommentarer_sorted.length;
-							for (let x in kommentarer_sorted) {
+							for (var x in kommentarer_sorted) {
 								let navnet = kommentarer_sorted[x].attributes.navn;
 								let en_comment = kommentarer_sorted[x].attributes.kommentar;
 								let bilde = kommentarer_sorted[x].attributes.bildeurl;
