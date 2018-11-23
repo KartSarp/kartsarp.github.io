@@ -21,8 +21,8 @@
 		  width:auto;
 		}
 
-		#viewDiv {
-		  float: left;
+		#viewDiv 
+{		  float: left;
 		  padding: 0;
 		  margin: 0;
 		  height: -webkit-calc(100% - 70px);
@@ -498,13 +498,12 @@
 								let en_comment = kommentarer_sorted[x].attributes.kommentar;
 								let bilde = kommentarer_sorted[x].attributes.bildeurl;
 								let tiddato = new Date(kommentarer_sorted[x].attributes.timedate);
-								console.log("pre DatoTing");
 								let day = tiddato.getDay();
-								console.log(day);
 								let month = tiddato.getMonth() + 1;
 								let year = tiddato.getFullYear();
 								let hours = tiddato.getHours();
 								let minutes = tiddato.getMinutes();
+								console.log(brukerid);
 
 								if (day <10) {
 									day="0"+day
