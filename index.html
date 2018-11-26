@@ -479,7 +479,7 @@
 					id: "likeTable"
 				});
 
-				
+				/*
 				function hentLikes() {
 					console.log("hentLikes");
 					console.log(brukerid);
@@ -491,7 +491,7 @@
 							console.log(response);
 							likes = response;
 						});
-				};
+				};*/
 
 				
 				var query = featureLayer.createQuery();
@@ -512,7 +512,14 @@
 							console.log(kommentarer_sorted);
 
 
-							hentLikes();
+							var likeQuery = likeTable.createQuery();
+							likeQuery.where = "1=1";
+							likeQuery.outFields = ["*"];
+							likeTable.queryFeatures(likeQuery)
+								.then(function(response) {
+									console.log(response);
+									likes = response;
+								});
 
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
