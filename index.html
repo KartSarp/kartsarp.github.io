@@ -518,10 +518,15 @@
 							likeTable.queryFeatures(likeQuery)
 								.then(function(response) {
 									console.log(response);
+									var likes = response.features;
 									num_com = kommentarer_sorted.length;
 									for (var x in kommentarer_sorted) {
-
-
+										let comment_id = kommentarer_sorted[x].attributes.OBJECTID;
+										for (var z in likes) {
+											if (likes[z].attributes.kommentarid == comment_id) {
+												console.log("Stemmer");
+											}
+										};
 										//sjekk likestable for om kommentaren har likes, og hvor mange.
 										//reutner true hvis brukeren  har liket og returner asnt likes. 
 
