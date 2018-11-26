@@ -517,7 +517,7 @@
 							likeQuery.outFields = ["*"];
 							likeTable.queryFeatures(likeQuery)
 								.then(function(response) {
-									console.log("likes: ", response.features);
+									console.log(response);
 									num_com = kommentarer_sorted.length;
 									for (var x in kommentarer_sorted) {
 
