@@ -489,9 +489,8 @@
 					likeTable.queryFeatures(likeQuery)
 						.then(function(response) {
 							console.log(response);
-							//return response;
+							likes = response;
 						});
-					//console.log(haloo);
 				};
 
 				
@@ -513,7 +512,7 @@
 							console.log(kommentarer_sorted);
 
 
-							//likes = hentLikes();
+							hentLikes();
 
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
