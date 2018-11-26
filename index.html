@@ -484,7 +484,7 @@
 					console.log("hentLikes");
 					console.log(brukerid);
 					var likeQuery = likeTable.createQuery();
-					likeQuery.where = "userid='10161172206135137'";
+					likeQuery.where = "userid='"+brukerid+"'";
 					likeQuery.outFields = ["*"];
 					likeTable.queryFeatures(likeQuery)
 						.then(function(response) {
