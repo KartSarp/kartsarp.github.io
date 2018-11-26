@@ -464,108 +464,6 @@
 
 				};
 
-								//Koden inne i Innlogget funksjonen kjøres bare for personer som har logget inn med facebook.
-				function innlogget() {
-					console.log('Welcome!  Fetching your information.... ');
-					FB.api('/me', function(response) {
-						console.log('Successful login for: ' + response.name);
-						console.log(response);
-						document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
-
-						$(".facelogin").hide();
-
-						$("#skjema").show();
-						$("#sendkommentar").css("display", "flex");
-
-						brukerid = response.id;
-						navn = response.name;
-						console.log(brukerid);
-
-
-						function applyEdits(parametere) {
-							featureLayer.applyEdits(parametere).then(function(editsResult) {
-									// Get the objectId of the newly added feature.
-									// Call selectFeature function to highlight the new feature.
-									console.log(editsResult.addFeatureResults);
-									if (editsResult.addFeatureResults.length > 0) {
-										const objectId = editsResult.addFeatureResults[0].objectId;
-
-									}
-								}).then(function() {
-									//Tøm kommentar-textfeltet
-									$("#komment").val("");
-									//$("#kommentarfelt").empty();
-									//hentkommentarer();
-								})
-								//Throw errorer som måtte dukke opp i consollen
-								.catch(function(error) {
-									console.log("===============================================");
-									console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
-										error.message);
-									console.log("error = ", error);
-								});
-						};
-
-
-
-						//Endre BildeURL-atributten i punkt-objektet.
-						function getMyPic(callback) {
-							FB.api('/' + brukerid + '/picture', 'GET', {
-									"redirect": "false"
-								},
-								function(response) {
-									callback(response.data.url);
-								}
-							);
-						};
-
-
-						editFeature = new Graphic({
-							geometry: {
-								type: "point", // autocasts as new Point()
-								longitude: 0.0,
-								latitude: 0.0
-							},
-							attributes: {
-								"userid": brukerid,
-								"kommentar": "none",
-								"navn": navn,
-								"epost": "none",
-								"bildeurl": "",
-								"timedate": ""
-							}
-						});
-
-
-						function getPic() {
-							getMyPic(function(url) {
-								console.log("BildeUrl", url)
-									//picurl = url;
-								editFeature.attributes.bildeurl = url;
-							});
-						};
-						//Kall funkjsonen som skal endre på URLatributten. 
-						getPic();
-
-						// Setup the applyEdits parameter with adds.
-						const edits = {
-							addFeatures: [editFeature]
-						};
-
-
-						$("#sendkommentar").on('click', function(edits) {
-							editFeature.attributes.kommentar = $("#komment").val();
-							editFeature.attributes.timedate = new Date();
-							console.log(editFeature);
-							
-							applyEdits({
-								addFeatures: [editFeature]
-							});
-							addComment(editFeature);
-						});				
-					});
-				};
-
 
 
 				const featureLayer = new FeatureLayer({
@@ -693,7 +591,107 @@
 				};
 
 
+				//Koden inne i Innlogget funksjonen kjøres bare for personer som har logget inn med facebook.
+				function innlogget() {
+					console.log('Welcome!  Fetching your information.... ');
+					FB.api('/me', function(response) {
+						console.log('Successful login for: ' + response.name);
+						console.log(response);
+						document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
 
+						$(".facelogin").hide();
+
+						$("#skjema").show();
+						$("#sendkommentar").css("display", "flex");
+
+						brukerid = response.id;
+						navn = response.name;
+						console.log(brukerid);
+
+
+						function applyEdits(parametere) {
+							featureLayer.applyEdits(parametere).then(function(editsResult) {
+									// Get the objectId of the newly added feature.
+									// Call selectFeature function to highlight the new feature.
+									console.log(editsResult.addFeatureResults);
+									if (editsResult.addFeatureResults.length > 0) {
+										const objectId = editsResult.addFeatureResults[0].objectId;
+
+									}
+								}).then(function() {
+									//Tøm kommentar-textfeltet
+									$("#komment").val("");
+									//$("#kommentarfelt").empty();
+									//hentkommentarer();
+								})
+								//Throw errorer som måtte dukke opp i consollen
+								.catch(function(error) {
+									console.log("===============================================");
+									console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
+										error.message);
+									console.log("error = ", error);
+								});
+						};
+
+
+
+						//Endre BildeURL-atributten i punkt-objektet.
+						function getMyPic(callback) {
+							FB.api('/' + brukerid + '/picture', 'GET', {
+									"redirect": "false"
+								},
+								function(response) {
+									callback(response.data.url);
+								}
+							);
+						};
+
+
+						editFeature = new Graphic({
+							geometry: {
+								type: "point", // autocasts as new Point()
+								longitude: 0.0,
+								latitude: 0.0
+							},
+							attributes: {
+								"userid": brukerid,
+								"kommentar": "none",
+								"navn": navn,
+								"epost": "none",
+								"bildeurl": "",
+								"timedate": ""
+							}
+						});
+
+
+						function getPic() {
+							getMyPic(function(url) {
+								console.log("BildeUrl", url)
+									//picurl = url;
+								editFeature.attributes.bildeurl = url;
+							});
+						};
+						//Kall funkjsonen som skal endre på URLatributten. 
+						getPic();
+
+						// Setup the applyEdits parameter with adds.
+						const edits = {
+							addFeatures: [editFeature]
+						};
+
+
+						$("#sendkommentar").on('click', function(edits) {
+							editFeature.attributes.kommentar = $("#komment").val();
+							editFeature.attributes.timedate = new Date();
+							console.log(editFeature);
+							
+							applyEdits({
+								addFeatures: [editFeature]
+							});
+							addComment(editFeature);
+						});				
+					});
+				};
 
 
 
