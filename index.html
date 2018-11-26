@@ -502,7 +502,7 @@
 							likeQuery.where = "1=1";
 							likeQuery.outFields = ["*"];
 							likeTable.queryFeatures(likeQuery)
-								.then(function(response) {
+								.then(function(response, kommentarer_sorted) {
 									console.log(response);
 									var likes = response.features;
 									console.log(likes);
