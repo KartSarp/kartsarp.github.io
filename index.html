@@ -479,20 +479,6 @@
 					id: "likeTable"
 				});
 
-				/*
-				function hentLikes() {
-					console.log("hentLikes");
-					console.log(brukerid);
-					var likeQuery = likeTable.createQuery();
-					likeQuery.where = "userid='"+brukerid+"'";
-					likeQuery.outFields = ["*"];
-					likeTable.queryFeatures(likeQuery)
-						.then(function(response) {
-							console.log(response);
-							likes = response;
-						});
-				};*/
-
 				
 				var query = featureLayer.createQuery();
 				query.where = "1=1";
@@ -524,11 +510,13 @@
 
 									for (var x in kommentarer_sorted) {
 										let comment_id = kommentarer_sorted[x].attributes.OBJECTID;
+										/*
 										for (var z in likes) {
 											if (likes[z].attributes.kommentarid == comment_id) {
 												console.log("Stemmer");
 											};
 										};
+										*/
 										//sjekk likestable for om kommentaren har likes, og hvor mange.
 										//reutner true hvis brukeren  har liket og returner asnt likes. 
 
