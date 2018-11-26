@@ -519,7 +519,9 @@
 								.then(function(response) {
 									console.log(response);
 									var likes = response.features;
+									console.log(likes);
 									num_com = kommentarer_sorted.length;
+									
 									for (var x in kommentarer_sorted) {
 										let comment_id = kommentarer_sorted[x].attributes.OBJECTID;
 										for (var z in likes) {
