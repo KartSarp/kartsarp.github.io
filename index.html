@@ -271,7 +271,7 @@
 		  left: calc(-1 * var(--borderWidth));
 		  height: calc(100% + var(--borderWidth) * 2);
 		  width: calc(100% + var(--borderWidth) * 2);
-		  background: linear-gradient(60deg, #5073b8, #1098ad, #07b39b, #6fba82);
+		  background: linear-gradient(60deg, #0066ff, #33cc33);
 		  border-radius: calc(2 * var(--borderWidth));
 		  z-index: -1;
 		  animation: animatedgradient 3s ease alternate infinite;
@@ -479,18 +479,22 @@
 					id: "likeTable"
 				});
 
-				/*
+				
 				function hentLikes() {
+					console.log("hentLikes");
 					console.log(brukerid);
 					var likeQuery = likeTable.createQuery();
-					likeQuery.where = "userid=10161172206135137";
+					likeQuery.where = "userid='10161172206135137'";
 					likeQuery.outFields = ["*"];
 					likeTable.queryFeatures(likeQuery)
 						.then(function(response) {
 							console.log(response);
+							//return response;
 						});
+					//console.log(haloo);
 				};
-				*/
+
+				
 				var query = featureLayer.createQuery();
 				query.where = "1=1";
 				query.outFields = ["*"];
@@ -509,17 +513,22 @@
 							console.log(kommentarer_sorted);
 
 
-							//hentLikes();
+							likes = hentLikes();
 
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
+
+
+								//sjekk likestable for om kommentaren har likes, og hvor mange.
+								//reutner true hvis brukeren  har liket og returner asnt likes. 
+
+								let comment_id = kommentarer_sorted[x].attributes.OBJECTID;
 								let navnet = kommentarer_sorted[x].attributes.navn;
 								let en_comment = kommentarer_sorted[x].attributes.kommentar;
 								let bilde = kommentarer_sorted[x].attributes.bildeurl;
 								let tiddato = new Date(kommentarer_sorted[x].attributes.timedate);
-								//console.log("pre DatoTing");
+
 								let day = tiddato.getDay();
-								//console.log(day);
 								let month = tiddato.getMonth() + 1;
 								let year = tiddato.getFullYear();
 								let hours = tiddato.getHours();
