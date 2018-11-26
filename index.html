@@ -519,6 +519,8 @@
 								.then(function(response) {
 									//console.log(response);
 									likes = response;
+								}).then(function() {
+									console.log(likes);
 								});
 							console.log(likes);
 							num_com = kommentarer_sorted.length;
