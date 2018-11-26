@@ -517,10 +517,10 @@
 							likeQuery.outFields = ["*"];
 							likeTable.queryFeatures(likeQuery)
 								.then(function(response) {
-									console.log(response);
+									//console.log(response);
 									likes = response;
 								});
-
+							console.log(likes);
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
 
