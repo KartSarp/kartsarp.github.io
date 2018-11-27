@@ -498,7 +498,7 @@
 				likeTable.queryFeatures(relquery)
 					.then(function(response) {
 						console.log(response);
-						likes.data=response.features;
+						likes.data=response.features.data;
 					});
 
 
