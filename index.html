@@ -541,7 +541,7 @@
 										//sjekk likestable for om kommentaren har likes, og hvor mange.
 										//reutner true hvis brukeren  har liket og returner asnt likes. 
 										//let bruker = kommentarer_sorted[x].attributes.userid;
-										let comment_id = kommentarer_sorted[x].attributes.OBJECTID;
+										var comment_id = kommentarer_sorted[x].attributes.OBJECTID;
 										let navnet = kommentarer_sorted[x].attributes.navn;
 										let en_comment = kommentarer_sorted[x].attributes.kommentar;
 										let bilde = kommentarer_sorted[x].attributes.bildeurl;
@@ -587,9 +587,9 @@
 											'<div class="singlecomment" id="'+comment_id+'"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div> <div class="dato">'+tidspunkt+'</div></div><div class="likediv"><img class="likebilde" src="" /></div></div>');
 
 										if (ant_likes<1) {
-											$("#"+comment_id).find(".likebilde")attr("src", "https://kartsarp.github.io/kartsarp.github.io/nolikes.svg")
+											$("#" + comment_id).find(".likebilde")attr("src", "https://kartsarp.github.io/kartsarp.github.io/nolikes.svg");
 										} else {
-											$("#"+comment_id).find(".likebilde")attr("src", "https://kartsarp.github.io/kartsarp.github.io/likes.svg")
+											$("#" + comment_id).find(".likebilde")attr("src", "https://kartsarp.github.io/kartsarp.github.io/likes.svg");
 										};
 
 										
