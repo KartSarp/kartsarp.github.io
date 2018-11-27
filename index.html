@@ -524,7 +524,10 @@
 								console.error("Error from queryRelatedFeatures");
 							});
 							*/
-							console.log("Hallo", likes);
+							likeTable.when(function () {
+								console.log("Hallo", likes);
+							});
+							
 
 
 							num_com = kommentarer_sorted.length;
