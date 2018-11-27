@@ -546,8 +546,9 @@
 								let hours = tiddato.getHours();
 								let minutes = tiddato.getMinutes();
 
-								let ant_likes = 0;
+								var ant_likes = 0;
 								for (var z in likes) {
+
 									//console.log(likes[z].attributes.userid);
 									if (likes[z].attributes.kommentar_id == comment_id) {
 										console.log("JA");
