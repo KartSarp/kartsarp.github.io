@@ -521,11 +521,13 @@
 								console.error("Error from queryRelatedFeatures");
 							});
 							*/
-
+							var hallo = {data:[]};
 							likeTable.queryFeatures(relquery)
 								.then(function(response) {
 									console.log(response);
+									hallo.data=response.features;
 								});
+							console.log("HALLO", hallo);
 
 
 							num_com = kommentarer_sorted.length;
