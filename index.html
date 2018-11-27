@@ -518,6 +518,8 @@
 
 							featureLayer.queryRelatedFeatures(relquery).then(function(result){
 								console.log(result);
+							}).catch(function(error) {
+								console.error("Error from queryRelatedFeatures");
 							});
 
 							num_com = kommentarer_sorted.length;
