@@ -204,6 +204,8 @@
 			float: left;
 			display: flex;
 			flex-direction: column;
+			text-align: center;
+			font-family: sans-serif;
 		}
 		.likebilde {
 			width: 40px;
@@ -590,6 +592,7 @@
 											$("#" + comment_id).find(".likebilde").attr("src", "https://kartsarp.github.io/kartsarp.github.io/nolikes.svg");
 										} else {
 											$("#" + comment_id).find(".likebilde").attr("src", "https://kartsarp.github.io/kartsarp.github.io/likes.svg");
+											$("#" + comment_id).find(".likediv").text(ant_likes);
 										};
 
 										
