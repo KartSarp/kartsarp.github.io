@@ -498,7 +498,7 @@
 				likeTable.queryFeatures(relquery)
 					.then(function(response) {
 						console.log(response);
-						likes.data=response.features.data;
+						likes.data=response.features;
 					});
 
 
@@ -529,8 +529,8 @@
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
 								//console.log("Likes", likes);
-								for (var item in likes) {
-									console.log(likes[item]);
+								for (var item in likes.data) {
+									console.log(likes.data[item]);
 								};
 								//sjekk likestable for om kommentaren har likes, og hvor mange.
 								//reutner true hvis brukeren  har liket og returner asnt likes. 
