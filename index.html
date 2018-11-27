@@ -489,11 +489,11 @@
 				query.outFields = ["*"];
 
 
-				const relquery = new RelationshipQuery();
-				relquery.outFields = ["*"];
-				relquery.relationshipId = 0;
-				relquery.objectIds = [0];
-
+				const relquery = {
+				relquery.outFields = ["*"],
+				relquery.relationshipId = 0,
+				relquery.objectIds = [0,1]
+				};
 
 
 
