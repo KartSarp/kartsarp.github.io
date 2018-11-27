@@ -495,11 +495,11 @@
 
 				//Lgaer et objekt med data som inneholder alle likes, og hvilke posts de hører til. 
 				var likes = {data:[]};
-					likeTable.queryFeatures(relquery)
-						.then(function(response) {
-							console.log(response);
-							likes.data=response.features;
-						});
+				likeTable.queryFeatures(relquery)
+					.then(function(response) {
+						console.log(response);
+						likes.data=response.features;
+					});
 
 
 				console.log("Relationship query", relquery);
@@ -528,10 +528,10 @@
 
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
-								/*
+								console.log("Likes", likes);
 								for (var item of likes) {
 									console.log(item);
-								};*/
+								};
 								//sjekk likestable for om kommentaren har likes, og hvor mange.
 								//reutner true hvis brukeren  har liket og returner asnt likes. 
 
