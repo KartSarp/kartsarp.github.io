@@ -499,6 +499,7 @@
 					.then(function(response) {
 						//likes.data=response.features;
 						console.log("Response", response);
+						var likes = response.features;
 					});
 
 
@@ -529,10 +530,10 @@
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
 								//console.log("Likes", likes);
-								/*
-								for (var item in likes.data) {
-									console.log(likes.data[item]);
-								};*/
+								
+								for (var z in likes) {
+									console.log("Enkel-kommentar: ",likes[z]);
+								};
 								//sjekk likestable for om kommentaren har likes, og hvor mange.
 								//reutner true hvis brukeren  har liket og returner asnt likes. 
 
