@@ -530,13 +530,10 @@
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
 								//console.log("Likes", likes);
-								for (var z in likes) {
-									console.log(likes[z].attributes.userid);
-								};
-								console.log(likes);
+
 								//sjekk likestable for om kommentaren har likes, og hvor mange.
 								//reutner true hvis brukeren  har liket og returner asnt likes. 
-
+								//let bruker = kommentarer_sorted[x].attributes.userid;
 								let comment_id = kommentarer_sorted[x].attributes.OBJECTID;
 								let navnet = kommentarer_sorted[x].attributes.navn;
 								let en_comment = kommentarer_sorted[x].attributes.kommentar;
@@ -548,6 +545,18 @@
 								let year = tiddato.getFullYear();
 								let hours = tiddato.getHours();
 								let minutes = tiddato.getMinutes();
+
+								let ant_likes = 0;
+								for (var z in likes) {
+									//console.log(likes[z].attributes.userid);
+									if (likes[z].attributes.kommentar_id == comment_id) {
+										console.log("JA");
+										ant_likes+=1;
+									};
+									console.log("Kommentar id " + likes[z].attributes.kommentar_id + " har " + ant_likes);
+								};
+								
+
 
 								if (day <10) {
 									day="0"+day
