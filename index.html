@@ -487,6 +487,16 @@
 				query.where = "1=1";
 				query.outFields = ["*"];
 
+
+				const relquery = {
+					outFields: ["*"],
+					relationshipId: 0,
+					objectIds: 1
+				};
+
+
+
+
 				function hentkommentarer() {
 
 					featureLayer.queryFeatures(query)
@@ -500,7 +510,9 @@
 							console.log("Attributter");
 							console.log(kommentarer_sorted);
 
-
+							featureLayer.queryRelatedFeatures(relquery).then(function(result){
+								console.log(result);
+							});
 
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
