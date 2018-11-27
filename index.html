@@ -474,7 +474,7 @@
 					id: "feedbacklayer"
 				});
 				const likeTable = new FeatureLayer({
-					url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/likeTable/FeatureServer/0",
+					url: "https://services.arcgis.com/43oQDcO8lvhTZSOO/arcgis/rest/services/tabeller/FeatureServer/0",
 					outFields: ["*"],
 					popupEnabled: false,
 					id: "likeTable"
@@ -489,11 +489,10 @@
 				query.outFields = ["*"];
 
 
-				const relquery = {
-				outFields : ["*"],
-				relationshipId : 0,
-				objectIds : [0]
-				};
+				const relquery = likeTable.createQuery();
+				relquery.outFields = ["*"];
+				relquery.relationshipId = 0;
+				relquery.objectIds = [0];
 
 
 
@@ -515,12 +514,19 @@
 							kommentarer_sorted.reverse();
 							console.log("Attributter");
 							console.log(kommentarer_sorted);
-
+							/*
 							featureLayer.queryRelatedFeatures(relquery).then(function(result){
 								console.log(result);
 							}).catch(function(error) {
 								console.error("Error from queryRelatedFeatures");
 							});
+							*/
+
+							likeTable.queryFeatures(relquery)
+								.then(function(response) {
+									console.log(response);
+								});
+
 
 							num_com = kommentarer_sorted.length;
 							for (var x in kommentarer_sorted) {
