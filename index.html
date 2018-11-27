@@ -479,8 +479,10 @@
 					id: "likeTable"
 				});
 
-
-				console.log(featureLayer.relationships);
+				featureLayer.when(function () {
+					console.log(featureLayer.relationships);
+				});
+				
 				var query = featureLayer.createQuery();
 				query.where = "1=1";
 				query.outFields = ["*"];
