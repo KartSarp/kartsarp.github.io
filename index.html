@@ -489,8 +489,9 @@
 				query.outFields = ["*"];
 
 
-				const relquery = featureLayer.createQuery();
+				const relquery = new RelationshipQuery();
 				relquery.outFields = ["*"];
+				relquery.relationshipId = 0;
 
 
 
