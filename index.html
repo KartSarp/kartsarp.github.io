@@ -558,14 +558,17 @@
 										let minutes = tiddato.getMinutes();
 
 										var ant_likes = 0;
-
+										var liked = false;
 										for (var z in likes) {
 											//console.log(likes[z].attributes.userid);
 											if (likes[z].attributes.kommentar_id == comment_id) {
 												ant_likes+=1;
+												//Sletter elementet fra listen ettersom man ikke trenger den lenger.
+												//færre elementer korter ned søketiden. 
 												likes.splice(z,1);
 											};
 											console.log(likes.length);
+											console.log("BrukerID", brukerid);
 											//console.log("Kommentar id " + likes[z].attributes.kommentar_id + " har " + ant_likes);
 										};
 
