@@ -646,8 +646,8 @@
 				function sjekkLikes(brukerid) {
 					for (var c in likes) {
 						if (likes[c].attributes.userid == brukerid) {
-							console.log("Brukeren har liket innlegget");
-							$("#" + likes[c].attributes.komment_id).find(".likebilde").css("background-color", "tomato");
+							console.log("Brukeren har liket innlegget" + likes[c].attributes.kommentar_id);
+							$("#" + likes[c].attributes.kommentar_id).find(".likebilde").css("background-color", "tomato");
 						}
 					};
 				};
