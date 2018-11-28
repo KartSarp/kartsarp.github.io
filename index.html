@@ -643,6 +643,15 @@
 				};
 
 
+				function sjekkLikes(brukerid) {
+					for (var z in likes) {
+						if (likes[z].attributes.userid == brukerid) {
+							console.log("Brukeren har liket innlegget");
+						}
+					};
+				};
+
+
 				//Koden inne i Innlogget funksjonen kjøres bare for personer som har logget inn med facebook.
 				function innlogget() {
 					console.log('Welcome!  Fetching your information.... ');
@@ -650,17 +659,16 @@
 						console.log('Successful login for: ' + response.name);
 						console.log(response);
 						document.getElementById('status').innerHTML = 'Du er nå logget inn ' + response.name + '!';
-
+						//Vis skjemaet som skal brukes til å sende inn kommentaren
 						$(".facelogin").hide();
-
 						$("#skjema").show();
 						$("#sendkommentar").css("display", "flex");
 
 						brukerid = response.id;
 						navn = response.name;
 						console.log(brukerid);
-						console.log(likes);
-
+						console.log("Likes", likes);
+						sjekkLikes(brukerid);
 
 						function applyEdits(parametere) {
 							featureLayer.applyEdits(parametere).then(function(editsResult) {
