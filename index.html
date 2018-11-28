@@ -539,7 +539,7 @@
 									//likes.data=response.features;
 									console.log("Response", response);
 									likes = response.features;
-
+									console.log("Likes", likes);
 									num_com = kommentarer_sorted.length;
 									for (var x in kommentarer_sorted) {
 										//console.log("Likes", likes);
@@ -560,10 +560,8 @@
 										let minutes = tiddato.getMinutes();
 
 										var ant_likes = 0;
-										console.log("AntLikes", ant_likes);
-										for (var z in likes) {
-											//console.log("HomseLøkka", z);
 
+										for (var z in likes) {
 											//console.log(likes[z].attributes.userid);
 											if (likes[z].attributes.kommentar_id == comment_id) {
 												console.log("JA");
