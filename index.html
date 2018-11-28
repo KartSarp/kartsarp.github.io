@@ -565,7 +565,7 @@
 												ant_likes+=1;
 												//Sletter elementet fra listen ettersom man ikke trenger den lenger.
 												//færre elementer korter ned søketiden. 
-												likes.splice(z,1);
+												//likes.splice(z,1);
 											};
 											console.log(likes.length);
 											//console.log("BrukerID", brukerid);
@@ -644,10 +644,10 @@
 
 
 				function sjekkLikes(brukerid) {
-					for (var z in likes) {
-						if (likes[z].attributes.userid == brukerid) {
+					for (var c in likes) {
+						if (likes[c].attributes.userid == brukerid) {
 							console.log("Brukeren har liket innlegget");
-							$("#" + likes[z].attributes.komment_id).find(".likebilde").css("background-color", "tomato");
+							$("#" + likes[c].attributes.komment_id).find(".likebilde").css("background-color", "tomato");
 						}
 					};
 				};
