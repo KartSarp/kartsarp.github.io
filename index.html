@@ -405,6 +405,7 @@
 <body>
 
   <script>
+  		//https://github.com/KartSarp/kartsarp.github.io/commit/5c43959f40b54dcf6d5e7bf3911d7749f2283b1f#diff-eacf331f0ffc35d4b482f1d15a887d3b    er FUNGERENDE
 
   		$(document).ready(function(){
 
@@ -418,6 +419,29 @@
 				"esri/tasks/support/RelationshipQuery"
 			],
 			function(on, FeatureLayer, Graphic, QueryTask, Query, RelationshipQuery) {
+
+
+				module.exports = (object, onChange) => {
+					const handler = {
+						get(target, property, receiver) {
+							try {
+								return new Proxy(target[property], handler);
+							} catch (err) {
+								return Reflect.get(target, property, receiver);
+							}
+						},
+						defineProperty(target, property, descriptor) {
+							onChange();
+							return Reflect.defineProperty(target, property, descriptor);
+						},
+						deleteProperty(target, property) {
+							onChange();
+							return Reflect.deleteProperty(target, property);
+						}
+					};
+
+					return new Proxy(object, handler);
+				};
 
 
 				// This is called with the results from from FB.getLoginStatus().
@@ -443,6 +467,10 @@
 
 				//Definerer et tomt likes-object
 				likes = {};
+
+				var hallo = {};
+				var endre = onChange(hallo, () => console.log("Denne ble endret"));
+				hallo.a=2;
 
 				//Kjøres etter en har forsøkt å logge inn med facebook dialogen.
 				window.checkLoginState = function() {
