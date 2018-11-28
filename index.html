@@ -563,7 +563,9 @@
 											//console.log(likes[z].attributes.userid);
 											if (likes[z].attributes.kommentar_id == comment_id) {
 												ant_likes+=1;
+												likes.splice(z,1);
 											};
+											console.log(likes.length);
 											//console.log("Kommentar id " + likes[z].attributes.kommentar_id + " har " + ant_likes);
 										};
 
