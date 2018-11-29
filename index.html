@@ -735,7 +735,7 @@
 
 									//Fjerne onclick eventet som lar deg gi en like dersom du nettopp har sendt inn en like på den kommentaren. 
 									$(".likediv").find("."+ parametere.addFeatures[0].attributes.kommentar_id).off();
-									console.log($("#"+parametere.addFeatures[0].attributes.kommentar_id).find("."+parametere.addFeatures[0].attributes.kommentar_id).text());									
+									console.log($(".likediv").find("."+parametere.addFeatures[0].attributes.kommentar_id).text());									
 
 
 								})
