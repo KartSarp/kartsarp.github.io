@@ -442,6 +442,16 @@
 					}
 				};
 
+				//Sjekker hvilke posts som den innloggede brukeren har liket, og gir like-knappen en annen farge dersom brukeren har liket posten. 
+				function sjekkLikes(brukerid) {
+					for (var c in likes) {
+						if (likes[c].attributes.userid == brukerid) {
+							console.log("Brukeren har liket innlegget" + likes[c].attributes.kommentar_id);
+							$("#" + likes[c].attributes.kommentar_id).find(".likebilde").css("background-color", "tomato");
+						}
+					};
+				};
+
 				// Setter opp en handler til å reagere når LIKES-objektet blir populated
 				window.handler = {
 					set: function(obj, prop, value) {
@@ -657,15 +667,7 @@
 					num_com+=1;
 				};
 
-				//Sjekker hvilke posts som den innloggede brukeren har liket, og gir like-knappen en annen farge dersom brukeren har liket posten. 
-				function sjekkLikes(brukerid) {
-					for (var c in likes) {
-						if (likes[c].attributes.userid == brukerid) {
-							console.log("Brukeren har liket innlegget" + likes[c].attributes.kommentar_id);
-							$("#" + likes[c].attributes.kommentar_id).find(".likebilde").css("background-color", "tomato");
-						}
-					};
-				};
+
 
 
 				//Koden inne i Innlogget funksjonen kjøres bare for personer som har logget inn med facebook.
