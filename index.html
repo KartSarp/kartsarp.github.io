@@ -737,7 +737,7 @@
 									$(".likediv").find("."+ parametere.addFeatures[0].attributes.kommentar_id).off();
 									console.log($(".likediv").find("."+parametere.addFeatures[0].attributes.kommentar_id).parent().find(".likecount").text());	
 									let antlikes = parseInt($(".likediv").find("."+parametere.addFeatures[0].attributes.kommentar_id).parent().find(".likecount").text());
-									$(".likediv").find("."+parametere.addFeatures[0].attributes.kommentar_id).parent().find(".likecount").text() = (antlikes+1).toString();
+									$(".likediv").find("."+parametere.addFeatures[0].attributes.kommentar_id).parent().find(".likecount").text(antlikes+1);
 
 
 								})
