@@ -453,6 +453,7 @@
 				  }
 				};
 
+				p = {};
 				//Definerer et tomt likes-object
 				likes = {};
 
@@ -555,7 +556,7 @@
 									console.log("Response", response);
 									likes = response.features;
 									p.data=likes;
-									
+
 									console.log("Likes", likes);
 									num_com = kommentarer_sorted.length;
 									for (var x in kommentarer_sorted) {
