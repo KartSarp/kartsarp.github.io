@@ -551,6 +551,7 @@
 							kommentarer_sorted=kommentarer.sort(function(a,b) {
 							    return new Date(b.timedate) - new Date(a.timedate);
 							});
+							//Snur lista slik at når den itereres over vil de nye kommentarene komme øverst i kommentarfeltet
 							kommentarer_sorted.reverse();
 							console.log("Attributter", kommentarer_sorted);
 							/*
@@ -560,7 +561,7 @@
 								console.error("Error from queryRelatedFeatures");
 							});
 							*/
-											//Lgaer et objekt med data som inneholder alle likes, og hvilke posts de hører til. 
+							//Lager et objekt med data som inneholder alle likes, og hvilke posts de hører til. 
 							//var likes;
 							likeTable.queryFeatures(relquery)
 								.then(function(response) {
@@ -568,7 +569,9 @@
 									console.log("LikesResponse", response.features);
 									
 									likes = response.features;
+									//Prøver å trigge Handleren her
 									p.data = "likes";
+
 									console.log("Likes", likes);
 									num_com = kommentarer_sorted.length;
 									for (var x in kommentarer_sorted) {
@@ -590,16 +593,10 @@
 										var ant_likes = 0;
 										var liked = false;
 										for (var z in likes) {
-											//console.log(likes[z].attributes.userid);
+											//sjekker om "likens" foreign key er lik som kommentarens primary key. Hvis ja, increment antall likes variable
 											if (likes[z].attributes.kommentar_id == comment_id) {
 												ant_likes+=1;
-												//Sletter elementet fra listen ettersom man ikke trenger den lenger.
-												//færre elementer korter ned søketiden. 
-												//likes.splice(z,1);
 											};
-											//console.log(likes.length);
-											//console.log("BrukerID", brukerid);
-											//console.log("Kommentar id " + likes[z].attributes.kommentar_id + " har " + ant_likes);
 										};
 
 
@@ -723,6 +720,29 @@
 								});
 						};
 
+						function giveLike(parametere) {
+							likeTable.applyEdits(parametere).then(function(editsResult) {
+									// Get the objectId of the newly added feature.
+									// Call selectFeature function to highlight the new feature.
+									console.log(editsResult.addFeatureResults);
+									if (editsResult.addFeatureResults.length > 0) {
+										const objectId = editsResult.addFeatureResults[0].objectId;
+
+									}
+								}).then(function() {
+									//Etter fullført innsending av Like
+
+
+								})
+								//Throw errorer som måtte dukke opp i consollen
+								.catch(function(error) {
+									console.log("===============================================");
+									console.error("[ applyEdits ] FAILURE: ", error.code, error.name,
+										error.message);
+									console.log("error = ", error);
+								});
+						};
+
 
 
 						//Endre BildeURL-atributten i punkt-objektet.
@@ -753,6 +773,19 @@
 							}
 						});
 
+						likedata = new Graphic({
+							geometry: {
+								type: "point", // autocasts as new Point()
+								longitude: 0.0,
+								latitude: 0.0
+							},
+							attributes: {
+								"userid": brukerid,
+								"numLikes": 1,
+								"kommentar_id": 0
+							}
+						});
+
 
 						function getPic() {
 							getMyPic(function(url) {
@@ -768,6 +801,21 @@
 						const edits = {
 							addFeatures: [editFeature]
 						};
+						// Setter opp dataene som skal sendes inn til feature servicen med Key addFeatures
+						const like = {
+							addFeatures: [likedata]
+						};
+
+						$(".likebilde").on('click', function(like) {
+							likedata.attributes.kommentar_id = $(this).attr("id");
+							console.log(likedata.attributes.kommentar_id);
+							//giveLike()
+							/*
+							$("ul").on("click", "li", function(event) {
+						      //event.preventDefault();
+						      velgAar( $(this).attr("navn") );
+						    });*/
+						})
 
 
 						$("#sendkommentar").on('click', function(edits) {
