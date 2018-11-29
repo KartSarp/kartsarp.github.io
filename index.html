@@ -733,7 +733,7 @@
 									//Etter fullført innsending av Like
 									console.log("fullført like-send");
 									console.log(parametere.addFeatures[0].attributes.kommentar_id);
-									$("img, #"+parametere.addFeatures[0].attributes.kommentar_id).off();
+									$(".likediv").find("#"+ parametere.addFeatures[0].attributes.kommentar_id).off();
 
 
 
