@@ -806,7 +806,10 @@
 							addFeatures: [likedata]
 						};
 
-						$(".likebilde").on('click', function(like) {
+						var k1 = $(".singlecomment");
+						console.log(k1);
+
+						$(".likebilde").on('click', , function(like) {
 							likedata.attributes.kommentar_id = $(this).attr("id");
 							console.log(likedata.attributes.kommentar_id);
 							//giveLike()
