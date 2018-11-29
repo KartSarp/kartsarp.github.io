@@ -553,10 +553,10 @@
 							likeTable.queryFeatures(relquery)
 								.then(function(response) {
 									//likes.data=response.features;
-									console.log("Response", response);
+									console.log("LikesResponse", response.features);
 									sleep(1000);
 									likes = response.features;
-									p.data=likes;
+									p.data = likes;
 
 									console.log("Likes", likes);
 									num_com = kommentarer_sorted.length;
