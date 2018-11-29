@@ -732,8 +732,11 @@
 								}).then(function() {
 									//Etter fullført innsending av Like
 									console.log("fullført like-send");
-									console.log(parametere.addFeatures[0].attributes.kommentar_id);
+
+									//Fjerne onclick eventet som lar deg gi en like dersom du nettopp har sendt inn en like på den kommentaren. 
 									$(".likediv").find("#"+ parametere.addFeatures[0].attributes.kommentar_id).off();
+									let antlikes = $(".likediv").find(".likecount").text();
+									console.log(typeof(antlikes));
 
 
 
