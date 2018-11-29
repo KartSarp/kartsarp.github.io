@@ -737,7 +737,8 @@
 									$(".likediv").find("#"+ parametere.addFeatures[0].attributes.kommentar_id).off();
 									let antlikes = $(".likediv").find(".likecount").text();
 									console.log(typeof(antlikes));
-
+									let antlikesint = parseInt(antlikes);
+									$(".likediv").find(".likecount").text(antlikesint);
 
 
 								})
