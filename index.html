@@ -460,7 +460,8 @@
 					    	sjekkLikes(brukerid);
 					    } else {
 					    	console.log("Error");
-					    }
+					    };
+					    console.log("Gjort ingenting");
 				  	}
 				};
 
@@ -683,7 +684,7 @@
 						$("#sendkommentar").css("display", "flex");
 
 						brukerid = response.id;
-						
+
 						if (jQuery.isEmptyObject(likes)) {
 							p = new Proxy({}, handler);
 							console.log("EMPTY");
