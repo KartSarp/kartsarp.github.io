@@ -614,7 +614,7 @@
 										};
 										let tidspunkt = ""+day+"."+month+"."+year+"&nbsp;"+hours+":"+minutes;
 										$("#kommentarfelt").append(
-											'<div class="singlecomment" id="'+comment_id+'"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div> <div class="dato">'+tidspunkt+'</div></div><div class="likediv"><img class="likebilde" class="'+comment_id+'" src="https://kartsarp.github.io/kartsarp.github.io/likes_univ_2.svg" /><div class="likecount"</div></div></div>');
+											'<div class="singlecomment" id="'+comment_id+'"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div> <div class="dato">'+tidspunkt+'</div></div><div class="likediv"><img class="likebilde '+comment_id+'" src="https://kartsarp.github.io/kartsarp.github.io/likes_univ_2.svg" /><div class="likecount"</div></div></div>');
 
 										if (ant_likes>=1) {
 											//$("#" + comment_id).find(".likebilde").attr("src", "https://kartsarp.github.io/kartsarp.github.io/nolikes.svg");
