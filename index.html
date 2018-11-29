@@ -443,7 +443,7 @@
 				};
 
 				// Setter opp en handler til å reagere når LIKES-objektet blir populated
-				handler = {
+				window.handler = {
 					set: function(obj, prop, value) {
 					  	if (prop == 'data') {
 					    	console.log('Objektet ble fylt');
@@ -556,7 +556,7 @@
 									console.log("LikesResponse", response.features);
 									
 									likes = response.features;
-									
+
 									p.data = likes;
 									sleep(1000);
 									console.log("Likes", likes);
