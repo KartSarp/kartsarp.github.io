@@ -442,6 +442,16 @@
 					}
 				};
 
+				// Setter opp en handler til å reagere når LIKES-objektet blir populated
+				handler = {
+					set: function(obj, prop, value) {
+				  	if (prop == 'data') {
+				    	console.log('Objektet ble fylt');
+				    } else {
+				    	console.log("Error");
+				    }
+				  }
+				};
 
 				//Definerer et tomt likes-object
 				likes = {};
@@ -544,6 +554,8 @@
 									//likes.data=response.features;
 									console.log("Response", response);
 									likes = response.features;
+									p.data=likes;
+									
 									console.log("Likes", likes);
 									num_com = kommentarer_sorted.length;
 									for (var x in kommentarer_sorted) {
@@ -667,6 +679,7 @@
 						$("#sendkommentar").css("display", "flex");
 
 						if (jQuery.isEmptyObject(likes)) {
+							p = new Proxy({}, handler);
 							console.log("EMPTY");
 						} else {
 							console.log("NOT empty");
@@ -676,7 +689,7 @@
 						navn = response.name;
 						console.log(brukerid);
 						console.log(likes);
-						sjekkLikes(brukerid);
+						//sjekkLikes(brukerid);
 
 						function applyEdits(parametere) {
 							featureLayer.applyEdits(parametere).then(function(editsResult) {
