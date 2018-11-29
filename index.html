@@ -682,6 +682,8 @@
 						$("#skjema").show();
 						$("#sendkommentar").css("display", "flex");
 
+						brukerid = response.id;
+						
 						if (jQuery.isEmptyObject(likes)) {
 							p = new Proxy({}, handler);
 							console.log("EMPTY");
@@ -690,7 +692,7 @@
 							sjekkLikes(brukerid);
 						};
 
-						brukerid = response.id;
+						
 						navn = response.name;
 						console.log(brukerid);
 						console.log(likes);
