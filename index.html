@@ -812,8 +812,8 @@
 						};
 
 						$(".likebilde").on('click', function(like) {
-							likedata.attributes.kommentar_id = $(this).attr("id");
-							console.log($(this).attr("id"));
+							likedata.attributes.kommentar_id = $(this).attr("class");
+							console.log($(this).attr("class"));
 							giveLike({
 								addFeatures: [likedata]
 							});
