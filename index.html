@@ -614,7 +614,7 @@
 										};
 										let tidspunkt = ""+day+"."+month+"."+year+"&nbsp;"+hours+":"+minutes;
 										$("#kommentarfelt").append(
-											'<div class="singlecomment" id="'+comment_id+'"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div> <div class="dato">'+tidspunkt+'</div></div><div class="likediv"><img class="likebilde" src="https://kartsarp.github.io/kartsarp.github.io/likes_univ_2.svg" /><div class="likecount"</div></div></div>');
+											'<div class="singlecomment" id="'+comment_id+'"> <div class="bilde"><img src="' + bilde + '"/></div><div class="tekst"><div class="navn"><b>' + navnet + '</b></div><div class="komm">' + en_comment + '</div> <div class="dato">'+tidspunkt+'</div></div><div class="likediv"><img class="likebilde" id="'+komment_id+'" src="https://kartsarp.github.io/kartsarp.github.io/likes_univ_2.svg" /><div class="likecount"</div></div></div>');
 
 										if (ant_likes>=1) {
 											//$("#" + comment_id).find(".likebilde").attr("src", "https://kartsarp.github.io/kartsarp.github.io/nolikes.svg");
@@ -806,20 +806,18 @@
 							addFeatures: [likedata]
 						};
 
-						var k1 = $(".singlecomment");
-						console.log(k1);
-						/*
 						$(".likebilde").on('click', function(like) {
 							likedata.attributes.kommentar_id = $(this).attr("id");
-							console.log(likedata.attributes.kommentar_id);
+							console.log($(this).attr("id"));
 							//giveLike()
-							
+							/*
 							$("ul").on("click", "li", function(event) {
 						      //event.preventDefault();
 						      velgAar( $(this).attr("navn") );
 						    });
+						    */
 						})
-						*/
+						
 
 						$("#sendkommentar").on('click', function(edits) {
 							editFeature.attributes.kommentar = $("#komment").val();
